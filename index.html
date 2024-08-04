@@ -9,175 +9,273 @@
 		<title>Mizookie develops</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyZq8eQ9W9i9hH1btNfYo1K3GkF5z9F5UIvx5BldF9J5J7K3Bl7yY8k5pP5C1zP4k8F1F5x5N5K5P5W5F5Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Custom styles */
+			body {
+				font-family: 'Helvetica Neue', sans-serif;
+				background: #f4f4f4;
+				color: #333;
+				line-height: 1.6;
+			}
+			h1, h2, h3 {
+				color: #333;
+			}
+			#header {
+				background: #333;
+				color: #fff;
+				padding: 20px 0;
+				text-align: center;
+			}
+			#header .logo .title {
+				font-size: 1.8em;
+				margin-top: 10px;
+			}
+			#menu {
+				background: #444;
+				color: #fff;
+			}
+			#main {
+				padding: 20px;
+				background: #fff;
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			}
+			.tiles {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 20px;
+			}
+			.tiles article {
+				background: #fff;
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+				border-radius: 8px;
+				overflow: hidden;
+				transition: transform 0.2s ease;
+			}
+			.tiles article:hover {
+				transform: scale(1.05);
+			}
+			.tiles article .image img {
+				width: 100%;
+				border-bottom: 5px solid #333;
+			}
+			.tiles article h2 {
+				background: #333;
+				color: #fff;
+				padding: 10px;
+				margin: 0;
+			}
+			.tiles article .content {
+				padding: 20px;
+			}
+			#footer {
+				background: #333;
+				color: #fff;
+				padding: 20px;
+				text-align: center;
+			}
+			#footer .icons a {
+				color: #fff;
+				margin: 0 10px;
+				transition: color 0.2s ease;
+			}
+			#footer .icons a:hover {
+				color: #f4f4f4;
+			}
+			.work-section {
+				background: #f9f9f9;
+				padding: 40px 20px;
+				margin: 20px 0;
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+				border-radius: 8px;
+			}
+			.work-section h2 {
+				margin-bottom: 20px;
+				font-size: 2em;
+				color: #333;
+			}
+			.work-section p {
+				margin-bottom: 10px;
+				line-height: 1.6;
+			}
+		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
-			<div id="wrapper">
+		<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+			<!-- Header -->
+			<header id="header">
+				<div class="inner">
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Project Portfolio</span>
-								</a>
+					<!-- Logo -->
+					<a href="index.html" class="logo">
+						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Project Portfolio</span>
+					</a>
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
-
-						</div>
-					</header>
-
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
+					<!-- Nav -->
+					<nav>
 						<ul>
-							<li><a href="index.html">Home</a></li>							
+							<li><a href="#menu">Menu</a></li>
 						</ul>
 					</nav>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<header>
-								<h1>Hi, I'm Marzukh, and this is my portfolio.<br />
-								Feel free to browse around.</h1>
-								<p>I have graduated with a Bachelor's Degree in Computer Science Major at the University of Hong Kong.</p>
-								<p>I currently work as a Software Project Lead at Rabbit Credit Limited<p>
-								<p>As the Software Project Lead at Rabbit Credit Limited, I am working on the company's loan management system. This involves setting up integration with the Credit Data Smart (MCRA) ecosystem while leading a team of 4 people. I am utilizing Spring Boot as the primary technology stack. This includes establishing the backbone code structure and architecture, developing the core functionality and business logic flow, and integrating the necessary microservices to enable smooth data flow. I am also working on the CI/CD pipeline to integrate the components seamlessly, and currently working towards the deployment of the loan management system services. As the Software Project Lead, I am responsible for project management, team leadership, stakeholder engagement, and quality assurance.<p>
-								<p>Below is a list of personal projects I have worked on.</p>
-							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a href="https://github.com/MarzukhAsjad/anigen-blender-utils" target="_blank">
-										<h2>AniGEN-blender-utils</h2>
-										<div class="content">
-											<p><br/>This is a state of the art tool that helps speed up animation development</p>
-											<ul style="list-style-type: circle" style="text-align:left">
-												<li>Automation tool using Blender's Non Linear Animation Library</li>
-												<li>Can add and blend multiple motions and render into one video</li>
-												<li>Now also supports audio addition</li>
-											</ul>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="https://github.com/MarzukhAsjad/ICMS_COMP3278" target="_blank">
-										<h2>Intelligent Course Management System Software</h2>
-										<div class="content">
-											<p><br/> This is a desktop application made with Python for the frontend in the form of PyQt5, Python for backend, and MySQL for the database and querrying.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="https://github.com/MarzukhAsjad/LicenseRecognitionSystem" target="_blank">
-										<h2>License Plate Recognition System</h2>
-										<div class="content">
-											<p><br/>Created a License Plate Recognition System using Python and OpenCV library.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="https://github.com/MarzukhAsjad/Ray-Tracing" target="_blank">
-										<h2>Ray Tracing Engine</h2>
-										<div class="content">
-											<p><br/>Created a 3D Ray Tracing Engine in C++ which supports flexible camera movement as well as high quality rendering.</p>
-										</div>
-									</a>
-								</article>				
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="https://github.com/MarzukhAsjad/operating-system" target="_blank">
-										<h2>C shell</h2>
-										<div class="content">
-											<p><br/>Created a linux shell that uses C and other deep operating system functionalities to mimic a shell.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
-									</span>
-									<a href="https://github.com/MarzukhAsjad/ML_AI_projects" target="_blank">
-										<h2>Miscalleneous ML Projects</h2>
-										<div class="content">
-											<p><br/>Some Machine Learning Projects created in Google Collaboratory. These include:
-											<ul style="list-style-type: circle" style="text-align:left">
-												<li>Classifying rocks and mines</li>
-												<li>Edge Detecting program</li>
-												<li>Using NLP to identify poor sentences</li>
-											</ul>
-											</p>
-										</div>
-									</a>
-								</article>				
-							</section>
-						</div>
-					</div>
+				</div>
+			</header>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<section>
-								<h2>Get in touch</h2>
-								<form method="post" action="mailto:marzukh.asjad@gmail.com" enctype="text/plain" name="EmailForm" target="_blank">
-									<div class="fields">
-										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="field">
-											<textarea name="message" id="message" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send"></li>
+			<!-- Menu -->
+			<nav id="menu">
+				<h2>Menu</h2>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+				</ul>
+			</nav>
+
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					<header>
+						<h1>Hi, I'm Marzukh, and this is my portfolio.<br />
+						Feel free to browse around.</h1>
+						<p>I have graduated with a Bachelor's Degree in Computer Science Major at the University of Hong Kong.</p>
+						<p>I currently work as a Software Project Lead at Rabbit Credit Limited</p>
+					</header>
+
+					<!-- Work Section -->
+					<section class="work-section">
+						<h2>Work</h2>
+						<p>As the Software Project Lead at Rabbit Credit Limited, I am working on the company's loan management system. This involves setting up integration with the Credit Data Smart (MCRA) ecosystem while leading a team of 4 people. I am utilizing Spring Boot as the primary technology stack. This includes establishing the backbone code structure and architecture, developing the core functionality and business logic flow, and integrating the necessary microservices to enable smooth data flow. I am also working on the CI/CD pipeline to integrate the components seamlessly, and currently working towards the deployment of the loan management system services. As the Software Project Lead, I am responsible for project management, team leadership, stakeholder engagement, and quality assurance.</p>
+					</section>
+
+					<p>Below is a list of personal projects I have worked on.</p>
+
+					<section class="tiles">
+						<article class="style1">
+							<span class="image">
+								<img src="images/pic01.jpg" alt="" />
+							</span>
+							<a href="https://github.com/MarzukhAsjad/anigen-blender-utils" target="_blank">
+								<h2>AniGEN-blender-utils</h2>
+								<div class="content">
+									<p><br/>This is a state of the art tool that helps speed up animation development</p>
+									<ul style="list-style-type: circle;">
+										<li>Automation tool using Blender's Non Linear Animation Library</li>
+										<li>Can add and blend multiple motions and render into one video</li>
+										<li>Now also supports audio addition</li>
 									</ul>
-								</form>
-							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="https://www.linkedin.com/in/marzukh-akib-a-b7042590/" class="icon brands style2 fa-linkedin" target=”_blank”><span class="label">LinkedIn</span></a></li>
-									<li><a href="https://github.com/MarzukhAsjad" class="icon brands style2 fa-github" target=”_blank”><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-							<ul class="copyright">
-								<li>&copy; Mizookie develops. All rights reserved</li>
-							</ul>
-						</div>
-					</footer>
-
+								</div>
+							</a>
+						</article>
+						<article class="style2">
+							<span class="image">
+								<img src="images/pic02.jpg" alt="" />
+							</span>
+							<a href="https://github.com/MarzukhAsjad/ICMS_COMP3278" target="_blank">
+								<h2>Intelligent Course Management System Software</h2>
+								<div class="content">
+									<p><br/> This is a desktop application made with Python for the frontend in the form of PyQt5, Python for backend, and MySQL for the database and querrying.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style3">
+							<span class="image">
+								<img src="images/pic03.jpg" alt="" />
+							</span>
+							<a href="https://github.com/MarzukhAsjad/LicenseRecognitionSystem" target="_blank">
+								<h2>License Plate Recognition System</h2>
+								<div class="content">
+									<p><br/>Created a License Plate Recognition System using Python and OpenCV library.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style4">
+							<span class="image">
+								<img src="images/pic04.jpg" alt="" />
+							</span>
+							<a href="https://github.com/MarzukhAsjad/Ray-Tracing" target="_blank">
+								<h2>Ray Tracing Engine</h2>
+								<div class="content">
+									<p><br/>Created a 3D Ray Tracing Engine in C++ which supports flexible camera movement as well as high quality rendering.</p>
+								</div>
+							</a>
+						</article>				
+						<article class="style5">
+							<span class="image">
+								<img src="images/pic05.jpg" alt="" />
+							</span>
+							<a href="https://github.com/MarzukhAsjad/operating-system" target="_blank">
+								<h2>C shell</h2>
+								<div class="content">
+									<p><br/>Created a linux shell that uses C and other deep operating system functionalities to mimic a shell.</p>
+								</div>
+							</a>
+						</article>
+						<article class="style6">
+							<span class="image">
+								<img src="images/pic06.jpg" alt="" />
+							</span>
+							<a href="https://github.com/MarzukhAsjad/ML_AI_projects" target="_blank">
+								<h2>Miscellaneous ML Projects</h2>
+								<div class="content">
+									<p><br/>Some Machine Learning Projects created in Google Collaboratory. These include:
+									<ul style="list-style-type: circle;">
+										<li>Classifying rocks and mines</li>
+										<li>Edge Detecting program</li>
+										<li>Using NLP to identify poor sentences</li>
+									</ul>
+									</p>
+								</div>
+							</a>
+						</article>				
+					</section>
+				</div>
 			</div>
 
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<section>
+						<h2>Get in touch</h2>
+						<form method="post" action="mailto:marzukh.asjad@gmail.com" enctype="text/plain" name="EmailForm" target="_blank">
+							<div class="fields">
+								<div class="field half">
+									<input type="text" name="name" id="name" placeholder="Name" />
+								</div>
+								<div class="field half">
+									<input type="email" name="email" id="email" placeholder="Email" />
+								</div>
+								<div class="field">
+									<textarea name="message" id="message" placeholder="Message"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send"></li>
+							</ul>
+						</form>
+					</section>
+					<section>
+						<h2>Follow</h2>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/marzukh-akib-a-b7042590/" class="icon brands style2 fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/MarzukhAsjad" class="icon brands style2 fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+					<ul class="copyright">
+						<li>&copy; Mizookie develops. All rights reserved</li>
+					</ul>
+				</div>
+			</footer>
+
+		</div>
+
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
