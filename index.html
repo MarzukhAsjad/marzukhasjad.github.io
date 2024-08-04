@@ -104,9 +104,21 @@
 				font-size: 2em;
 				color: #333;
 			}
-			.work-section p {
+			.work-section h3 {
+				background: #333;
 				margin-bottom: 10px;
+				font-size: 1.3em;
+				color: #cbcbcb;
+			}
+			.work-section p {
+				margin-top: 10px;
+				margin-bottom: px;
 				line-height: 1.6;
+				font: 1em sans-serif;
+			}
+			.work-section li {
+				font: 0.9em sans-serif;
+				margin-bottom: 5px;
 			}
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
@@ -169,15 +181,18 @@
 						</ul>
 					</section>
 
-					<p>Below is a list of personal projects I have worked on.</p>
+					<!-- Personal Projects Section -->
+					<section class="work-section">
+						<h2>Personal Projects</h2>
+						<p>Below is a list of personal projects I have worked on.</p>
 
-					<section class="tiles">
-						<article class="style1 content">
+						<section class="tiles">
+							<article class="style1 content">
 								<span class="image">
 									<img src="images/pic01.jpg" alt="" />
 								</span>
 								<a href="https://github.com/MarzukhAsjad/anigen-blender-utils" target="_blank">
-									<h2>AniGEN-blender-utils</h2>
+									<h3>AniGEN-blender-utils</h3>
 									<div class="content">
 										<p><br/>This is a state of the art tool that helps speed up animation development</p>
 										<ul style="list-style-type: circle;">
@@ -187,68 +202,69 @@
 										</ul>
 									</div>
 								</a>
-						</article>
-						<article class="style2 content">
-							<span class="image">
-								<img src="images/pic02.jpg" alt="" />
-							</span>
-							<a href="https://github.com/MarzukhAsjad/ICMS_COMP3278" target="_blank">
-								<h2>Intelligent Course Management System Software</h2>
-								<div class="content">
-									<p><br/> This is a desktop application made with Python for the frontend in the form of PyQt5, Python for backend, and MySQL for the database and querying.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style3">
-							<span class="image">
-								<img src="images/pic03.jpg" alt="" />
-							</span>
-							<a href="https://github.com/MarzukhAsjad/LicenseRecognitionSystem" target="_blank">
-								<h2>License Plate Recognition System</h2>
-								<div class="content">
-									<p><br/>Created a License Plate Recognition System using Python and OpenCV library.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style4">
-							<span class="image">
-								<img src="images/pic04.jpg" alt="" />
-							</span>
-							<a href="https://github.com/MarzukhAsjad/Ray-Tracing" target="_blank">
-								<h2>Ray Tracing Engine</h2>
-								<div class="content">
-									<p><br/>Created a 3D Ray Tracing Engine in C++ which supports flexible camera movement as well as high quality rendering.</p>
-								</div>
-							</a>
-						</article>				
-						<article class="style5">
-							<span class="image">
-								<img src="images/pic05.jpg" alt="" />
-							</span>
-							<a href="https://github.com/MarzukhAsjad/operating-system" target="_blank">
-								<h2>C shell</h2>
-								<div class="content">
-									<p><br/>Created a linux shell that uses C and other deep operating system functionalities to mimic a shell.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style6 content">
-							<span class="image">
-								<img src="images/pic06.jpg" alt="" />
-							</span>
-							<a href="https://github.com/MarzukhAsjad/ML_AI_projects" target="_blank">
-								<h2>Miscellaneous ML Projects</h2>
-								<div class="content">
-									<p><br/>Some Machine Learning Projects created in Google Collaboratory. These include:
-									<ul style="list-style-type: circle;">
-										<li>Classifying rocks and mines</li>
-										<li>Edge Detecting program</li>
-										<li>Using NLP to identify poor sentences</li>
-									</ul>
-									</p>
-								</div>
-							</a>
-						</article>				
+							</article>
+							<article class="style2 content">
+								<span class="image">
+									<img src="images/pic02.jpg" alt="" />
+								</span>
+								<a href="https://github.com/MarzukhAsjad/ICMS_COMP3278" target="_blank">
+									<h3>Intelligent Course Management System Software</h3>
+									<div class="content">
+										<p><br/> This is a desktop application made with Python for the frontend in the form of PyQt5, Python for backend, and MySQL for the database and querying.</p>
+									</div>
+								</a>
+							</article>
+							<article class="style3 content">
+								<span class="image">
+									<img src="images/pic03.jpg" alt="" />
+								</span>
+								<a href="https://github.com/MarzukhAsjad/LicenseRecognitionSystem" target="_blank">
+									<h3>License Plate Recognition System</h3>
+									<div class="content">
+										<p><br/>Created a License Plate Recognition System using Python and OpenCV library.</p>
+									</div>
+								</a>
+							</article>
+							<article class="style4">
+								<span class="image">
+									<img src="images/pic04.jpg" alt="" />
+								</span>
+								<a href="https://github.com/MarzukhAsjad/Ray-Tracing" target="_blank">
+									<h3>Ray Tracing Engine</h3>
+									<div class="content">
+										<p><br/>Created a 3D Ray Tracing Engine in C++ which supports flexible camera movement as well as high quality rendering.</p>
+									</div>
+								</a>
+							</article>
+							<article class="style5">
+								<span class="image">
+									<img src="images/pic05.jpg" alt="" />
+								</span>
+								<a href="https://github.com/MarzukhAsjad/operating-system" target="_blank">
+									<h3>C shell</h3>
+									<div class="content">
+										<p><br/>Created a linux shell that uses C and other deep operating system functionalities to mimic a shell.</p>
+									</div>
+								</a>
+							</article>
+							<article class="style6 content">
+								<span class="image">
+									<img src="images/pic06.jpg" alt="" />
+								</span>
+								<a href="https://github.com/MarzukhAsjad/ML_AI_projects" target="_blank">
+									<h3>Miscellaneous ML Projects</h3>
+									<div class="content">
+										<p><br/>Some Machine Learning Projects created in Google Collaboratory. These include:
+										<ul style="list-style-type: circle;">
+											<li>Classifying rocks and mines</li>
+											<li>Edge Detecting program</li>
+											<li>Using NLP to identify poor sentences</li>
+										</ul>
+										</p>
+									</div>
+								</a>
+							</article>
+						</section>
 					</section>
 				</div>
 			</div>
