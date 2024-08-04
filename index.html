@@ -120,6 +120,27 @@
 				font: 0.9em sans-serif;
 				margin-bottom: 5px;
 			}
+
+			/* Media query for smaller screens */
+			@media (max-width: 767px) {
+				.tiles {
+					grid-template-columns: 1fr; /* Display one column on smaller screens */
+					grid-auto-rows: auto; /* Automatically adjust row height */
+				}
+				.tiles article {
+					transform: none !important; /* Remove any transform on hover */
+					box-shadow: none; /* Remove box-shadow */
+				}
+				.tiles article:hover {
+					transform: none; /* Remove transform on hover */
+				}
+				.tiles article .content {
+					transform: none !important; /* Remove any transform on content */
+				}
+				.tiles article:hover .content {
+					transform: none; /* Remove transform on content hover */
+				}
+			}
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
