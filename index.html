@@ -125,20 +125,37 @@
 			@media (max-width: 767px) {
 				.work-section h3 {
 					font-size: 1.1em;
+					margin-bottom: 5px;
+					margin-top: 5px;
+				}
+				.work-section p {
+					margin-top: 5px;
+					margin-bottom: 5px;
+				}
+				.work-section li {
+					margin-top: 5px;
+					margin-bottom: 5px;
+				}
+				.work-section {
+					padding: 20px 10px;
 				}
 				.tiles {
 					grid-template-columns: 1fr; /* Display one column on smaller screens */
-					grid-auto-rows: 600px; /* Increase tile height for smaller screens */
+					grid-auto-rows: auto; /* Increase tile height for smaller screens */
 				}
 				.tiles article {
 					transform: none !important; /* Remove any transform on hover */
 					box-shadow: none; /* Remove box-shadow */
+				}
+				.titles article h2 {
+					padding: 5px; /* Remove background color on hover */
 				}
 				.tiles article:hover {
 					transform: none; /* Remove transform on hover */
 				}
 				.tiles article .content {
 					transform: none !important; /* Remove any transform on content */
+					padding: 5px;
 					flex: 1;
 				}
 				.tiles article:hover .content {
