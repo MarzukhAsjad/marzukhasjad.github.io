@@ -123,9 +123,12 @@
 
 			/* Media query for smaller screens */
 			@media (max-width: 767px) {
+				.work-section h3 {
+					font-size: 1.1em;
+				}
 				.tiles {
 					grid-template-columns: 1fr; /* Display one column on smaller screens */
-					grid-auto-rows: auto; /* Automatically adjust row height */
+					grid-auto-rows: 600px; /* Increase tile height for smaller screens */
 				}
 				.tiles article {
 					transform: none !important; /* Remove any transform on hover */
@@ -136,9 +139,17 @@
 				}
 				.tiles article .content {
 					transform: none !important; /* Remove any transform on content */
+					flex: 1;
 				}
 				.tiles article:hover .content {
 					transform: none; /* Remove transform on content hover */
+				}
+				.tiles article .image {
+					flex: 1; /* Ensure the image container fills the entire tile */
+				}
+				.tiles article img {
+					height: 100%; /* Ensure the image height fills the entire tile for smaller screens */
+					object-fit: cover; /* Maintains aspect ratio and covers the entire tile */
 				}
 			}
 		</style>
