@@ -52,13 +52,16 @@
 				border-radius: 8px;
 				overflow: hidden;
 				transition: transform 0.2s ease;
+				display: flex;
+				flex-direction: column;
+				text-align: left;
 			}
 			.tiles article:hover {
 				transform: scale(1.05);
 			}
 			.tiles article .image img {
 				width: 100%;
-				border-bottom: 5px solid #333;
+				height: auto;
 			}
 			.tiles article h2 {
 				background: #333;
@@ -68,6 +71,7 @@
 			}
 			.tiles article .content {
 				padding: 20px;
+				flex: 1;
 			}
 			#footer {
 				background: #333;
@@ -175,7 +179,7 @@
 							<a href="https://github.com/MarzukhAsjad/ICMS_COMP3278" target="_blank">
 								<h2>Intelligent Course Management System Software</h2>
 								<div class="content">
-									<p><br/> This is a desktop application made with Python for the frontend in the form of PyQt5, Python for backend, and MySQL for the database and querrying.</p>
+									<p><br/> This is a desktop application made with Python for the frontend in the form of PyQt5, Python for backend, and MySQL for the database and querying.</p>
 								</div>
 							</a>
 						</article>
