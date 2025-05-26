@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { gsap } from "gsap";
 import {
   AnimatedSpan,
@@ -7,10 +7,8 @@ import {
 } from "@/components/magicui/terminal";
 
 const Hero: React.FC = () => {
-  const terminalRef = useRef<HTMLDivElement>(null);
-
   return (
-    <section className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white flex items-center justify-center">
+    <section className="min-h-screen text-white flex items-center px-10 justify-cente text-left">
       <Terminal>
         <TypingAnimation delay={0} className="text-gray-300">
           {"> whoami"}
