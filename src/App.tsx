@@ -9,13 +9,15 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App w-full min-h-screen bg-black overflow-x-hidden">
+    <div className="App w-screen min-h-screen bg-black overflow-x-hidden">
       <main className="w-full">
         <Hero />
-        <TechStack />
-        <FeaturedProjects />
-        <OtherProjects />
-        <Contact />
+        <div className="max-w-7xl mx-auto px-4">
+          <TechStack />
+          <FeaturedProjects />
+          <OtherProjects />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="w-full top-0 bg-white z-50 shadow-md">
-      <div className="container mx-auto px-4 py-4">
+    <nav className="w-full fixed top-0 bg-white z-50 shadow-md">
+      <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="text-xl font-bold">Your Name</div>
           <div className="hidden md:flex space-x-6">

@@ -8,7 +8,7 @@ import {
 
 const Hero: React.FC = () => {
   return (
-    <section className="min-h-screen text-white flex items-center px-10 justify-cente text-left">
+    <section className="min-h-screen w-full text-white flex items-center px-10 justify-center text-left bg-black">
       <Terminal>
         <TypingAnimation delay={0} className="text-gray-300">
           {"> whoami"}
