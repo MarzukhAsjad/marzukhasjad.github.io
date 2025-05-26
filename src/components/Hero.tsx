@@ -1,14 +1,45 @@
-import React from 'react';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/components/magicui/terminal";
 
 const Hero: React.FC = () => {
+  const terminalRef = useRef<HTMLDivElement>(null);
+
   return (
-    <section id="home" className="min-h-screen flex items-center">
-      <div className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold mb-4">Hi, I'm [Your Name]</h1>
-        <p className="text-xl mb-6">Full Stack Developer</p>
-        <p className="text-gray-600 max-w-2xl">
-          A passionate developer focused on creating interactive and responsive web applications.
-        </p>
+    <section className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white flex items-center justify-center">
+      <Terminal>
+        <TypingAnimation delay={0} className="text-gray-300">
+          {"> whoami"}
+        </TypingAnimation>
+        <AnimatedSpan
+          delay={1500}
+          className="text-green-400 whitespace-pre-line"
+        >
+          {
+            "Marzukh Asjad - Software Engineer & Co-founder\nCS Graduate from University of Hong Kong\nCurrently leading fintech innovation at Rabbit Credit Limited"
+          }
+        </AnimatedSpan>
+
+        <TypingAnimation delay={2500} className="text-gray-300">
+          {"> skills --primary"}
+        </TypingAnimation>
+        <AnimatedSpan
+          delay={4000}
+          className="text-green-400 whitespace-pre-line"
+        >
+          {
+            "Java, Spring Boot, Python, React, TypeScript, Docker, AWS\nTeam Leadership, AI Integration, Full-Stack Development"
+          }
+        </AnimatedSpan>
+      </Terminal>
+
+      {/* Tech Stack Orbiting Circles */}
+      <div className="mt-12 flex justify-center">
+        {/* OrbitingCircles component will go here */}
       </div>
     </section>
   );
