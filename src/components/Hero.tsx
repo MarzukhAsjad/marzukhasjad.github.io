@@ -1,10 +1,12 @@
 import React from "react";
-import { gsap } from "gsap";
 import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
 } from "@/components/magicui/terminal";
+import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
+import { Java, Spring, FastAPI, Python, Git, Docker, PostgreSQL } from "developer-icons";
+
 
 const Hero: React.FC = () => {
   return (
@@ -35,9 +37,21 @@ const Hero: React.FC = () => {
         </AnimatedSpan>
       </Terminal>
 
-      {/* Tech Stack Orbiting Circles */}
+      {/* Tech Stack Orbiting Circles should be placed slightly in the background to the left with parallax effect */}
       <div className="mt-12 flex justify-center">
-        {/* OrbitingCircles component will go here */}
+        <div>
+          <OrbitingCircles iconSize={40} path={true} radius={150} speed={1}>
+            <Java />
+            <Spring />
+            <FastAPI />
+            <Python />
+          </OrbitingCircles>
+          <OrbitingCircles iconSize={30} path={true} radius={100} reverse speed={4}>
+            <Git />
+            <Docker />
+            <PostgreSQL />
+          </OrbitingCircles>
+        </div>
       </div>
     </section>
   );
