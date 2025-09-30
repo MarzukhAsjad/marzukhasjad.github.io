@@ -69,38 +69,38 @@ const TerminalPage1: React.FC = () => (
 const TerminalPage2: React.FC = () => (
   <>
     <div className="flex items-baseline">
-      <AnimatedSpan delay={9000} className="text-green-500">
+      <AnimatedSpan className="text-green-500">
         mizookie@localhost:~${" "}
       </AnimatedSpan>
-      <TypingAnimation delay={9500} duration={25} className="text-yellow-200">
+      <TypingAnimation delay={500} duration={25} className="text-yellow-200">
         {"projects --featured"}
       </TypingAnimation>
     </div>
-    <AnimatedSpan delay={11000} className="text-gray-200 whitespace-pre-line">
+    <AnimatedSpan delay={2000} className="text-gray-200 whitespace-pre-line">
       {
         "AniGEN: Open-source text-to-animation generator (Blender, Python, N8N workflows)\nPackage Mapper: Repository dependency visualizer\nWhatsApp AI Chatbot: Real-time subscription payments and learning analytics (Python, FastAPI, Airwallex API)\nFinTech Systems: MCRA-integrated loan management platform (Java, Spring, MERN)"
       }
     </AnimatedSpan>
 
     <div className="flex items-baseline">
-      <AnimatedSpan delay={11200} className="text-green-500">
+      <AnimatedSpan delay={2200} className="text-green-500">
         mizookie@localhost:~${" "}
       </AnimatedSpan>
-      <TypingAnimation delay={12500} duration={25} className="text-yellow-200">
+      <TypingAnimation delay={3500} duration={25} className="text-yellow-200">
         {"achievements --recent"}
       </TypingAnimation>
     </div>
-    <AnimatedSpan delay={14000} className="text-gray-200 whitespace-pre-line">
+    <AnimatedSpan delay={5000} className="text-gray-200 whitespace-pre-line">
       {
         "40% faster development cycles (CICD & agile)\n1000+ monthly data transactions processed\nDeployed scalable production systems (Docker, AWS, Nginx)\nLed cross-functional teams (3-4 developers) to delivery"
       }
     </AnimatedSpan>
 
     <div className="flex items-baseline">
-      <AnimatedSpan delay={14200} className="text-green-500">
+      <AnimatedSpan delay={5200} className="text-green-500">
         mizookie@localhost:~${" "}
       </AnimatedSpan>
-      <TypingAnimation delay={15500} duration={25} className="text-yellow-200">
+      <TypingAnimation delay={6500} duration={25} className="text-yellow-200">
         {"clear"}
       </TypingAnimation>
     </div>
@@ -109,16 +109,18 @@ const TerminalPage2: React.FC = () => (
 
 const Hero: React.FC = () => {
   const [loopKey, setLoopKey] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const animationDuration = 17000; // 17 seconds
+    const pageInterval = 10000; // 10 seconds per page
 
-    const loopTimer = setInterval(() => {
-      setLoopKey((prev) => prev + 1); // Change key to force remount
-    }, animationDuration);
+    const pageTimer = setInterval(() => {
+      setCurrentPage((prev) => (prev === 1 ? 2 : 1)); // Toggle between page 1 and 2
+      setLoopKey((prev) => prev + 1); // Force remount for new animations
+    }, pageInterval);
 
     // Cleanup interval on component unmount
-    return () => clearInterval(loopTimer);
+    return () => clearInterval(pageTimer);
   }, []);
 
   return (
@@ -139,8 +141,7 @@ const Hero: React.FC = () => {
         key={loopKey}
         className="max-w-2xl min-h-[500px] h-auto p-8 rounded-lg shadow-lg bg-amber-950"
       >
-        <TerminalPage1 />
-        <TerminalPage2 />
+        {currentPage === 1 ? <TerminalPage1 /> : <TerminalPage2 />}
       </Terminal>
     </section>
   );
