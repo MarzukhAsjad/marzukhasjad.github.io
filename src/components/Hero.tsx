@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
   const [loopKey, setLoopKey] = useState(0);
 
   useEffect(() => {
-    const animationDuration = 16500; // 16.5 seconds
+    const animationDuration = 17000; // 17 seconds
 
     const loopTimer = setInterval(() => {
       setLoopKey((prev) => prev + 1); // Change key to force remount
