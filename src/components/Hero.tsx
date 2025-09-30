@@ -7,7 +7,19 @@ import {
 
 const Hero: React.FC = () => {
   return (
-    <section className="min-h-screen text-white flex items-center px-10 justify-center text-left bg-purple-950">
+    <section className="min-h-screen text-white flex flex-col items-center px-10 justify-center text-left bg-purple-950">
+      <div
+        className="mb-4 cursor-pointer hover:text-blue-300 transition-colors duration-200"
+        onClick={() => (window.location.href = "/blog")}
+      >
+        <TypingAnimation
+          delay={2700}
+          duration={30}
+          className="text-yellow-400 mt-4 text-lg"
+        >
+          {"Skip to Blog >"}
+        </TypingAnimation>
+      </div>
       <Terminal className="max-w-2xl min-h-[500px] h-auto p-8 rounded-lg shadow-lg bg-amber-950">
         <TypingAnimation duration={30} className="text-green-400">
           {"mizookie@localhost:~$ whoami"}
