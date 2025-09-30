@@ -21,63 +21,103 @@ const Hero: React.FC = () => {
         </TypingAnimation>
       </div>
       <Terminal className="max-w-2xl min-h-[500px] h-auto p-8 rounded-lg shadow-lg bg-amber-950">
-        <TypingAnimation duration={30} className="text-green-400">
-          {"mizookie@localhost:~$ whoami"}
-        </TypingAnimation>
+        <div className="flex items-baseline">
+          <AnimatedSpan delay={0} className="text-green-500">
+            mizookie@localhost:~${" "}
+          </AnimatedSpan>
+          <TypingAnimation
+            duration={30}
+            className="text-yellow-200 inline-block"
+          >
+            whoami
+          </TypingAnimation>
+        </div>
         <AnimatedSpan
           delay={1500}
           className="text-gray-200 whitespace-pre-line"
         >
           {
-            "Marzukh Akib Asjad - Software Project Lead & Co-founder\nComputer Science graduate from HKU in 2024"
+            "Marzukh Akib Asjad - Software Engineer & Co-founder\nBEng (CS) graduate, University of Hong Kong, 2024"
           }
         </AnimatedSpan>
-
-        <TypingAnimation delay={2500} duration={25} className="text-green-400">
-          {"mizookie@localhost:~$ skills --primary"}
-        </TypingAnimation>
+        <div className="flex items-baseline">
+          <AnimatedSpan delay={1700} className="text-green-500">
+            mizookie@localhost:~${" "}
+          </AnimatedSpan>
+          <TypingAnimation
+            delay={2500}
+            duration={25}
+            className="text-yellow-200 inline-block"
+          >
+            {"skills --primary"}
+          </TypingAnimation>
+        </div>
         <AnimatedSpan
           delay={4000}
           className="text-gray-200 whitespace-pre-line"
         >
           {
-            "Java, Spring Boot, Python, React, TypeScript, Docker, AWS, Team Leadership, AI Integration, Full-Stack Development"
+            "Java, Spring Boot, Python, React, TypeScript, Docker, AWS, Next.js, FastAPI, GitHub Actions, MERN, C, AI Integration, CICD, Team Leadership, Full-Stack & Backend Development"
           }
         </AnimatedSpan>
-
-        <TypingAnimation delay={5500} duration={25} className="text-green-400">
-          {"mizookie@localhost:~$ experience --current"}
-        </TypingAnimation>
+        <div className="flex items-baseline">
+          <AnimatedSpan delay={4200} className="text-green-500">
+            mizookie@localhost:~${" "}
+          </AnimatedSpan>
+          <TypingAnimation
+            delay={5500}
+            duration={25}
+            className="text-yellow-200"
+          >
+            {"experience --current"}
+          </TypingAnimation>
+        </div>
         <AnimatedSpan
           delay={7000}
           className="text-gray-200 whitespace-pre-line"
         >
           {
-            "Leading fintech innovation at Rabbit Credit Limited\nCo-founding AI edtech startup Examify Limited"
+            "Team Lead, Software Engineering at Rabbit Credit Limited (Fintech - MCRA Credit Data Smart)\nCo-founder & System Engineer at Examify Limited (AI-powered EdTech, HKSTP ideation & funding)"
           }
         </AnimatedSpan>
-
-        <TypingAnimation delay={8500} duration={25} className="text-green-400">
-          {"mizookie@localhost:~$ projects --featured"}
-        </TypingAnimation>
+        <div className="flex items-baseline">
+          <AnimatedSpan delay={7200} className="text-green-500">
+            mizookie@localhost:~${" "}
+          </AnimatedSpan>
+          <TypingAnimation
+            delay={8500}
+            duration={25}
+            className="text-yellow-200"
+          >
+            {"projects --featured"}
+          </TypingAnimation>
+        </div>
         <AnimatedSpan
-          delay={10000}
+          delay={11500}
           className="text-gray-200 whitespace-pre-line"
         >
           {
-            "AniGEN: Open-source text-to-animation tool\nPackage Mapper: Open-source repository dependency visualization tool\nFinTech Systems: MCRA-integrated loan management"
+            "AniGEN: Open-source text-to-animation generator (Blender, Python, N8N workflows)\nPackage Mapper: Repository dependency visualizer\nWhatsApp AI Chatbot: Real-time subscription payments and learning analytics (Python, FastAPI, Airwallex API)\nFinTech Systems: MCRA-integrated loan management platform (Java, Spring, MERN)"
           }
         </AnimatedSpan>
-
-        <TypingAnimation delay={11500} duration={25} className="text-green-400">
-          {"mizookie@localhost:~$ achievements --recent"}
-        </TypingAnimation>
+        <div className="flex items-baseline">
+          <AnimatedSpan delay={11700} className="text-green-500">
+            mizookie@localhost:~${" "}
+          </AnimatedSpan>
+          <TypingAnimation
+            delay={13000}
+            duration={25}
+            className="text-yellow-200"
+          >
+            {"achievements --recent"}
+          </TypingAnimation>
+        </div>
         <AnimatedSpan
-          delay={13000}
+          delay={14500}
           className="text-gray-200 whitespace-pre-line"
         >
           {
-            "40% improvement in development speed\n1000+ monthly data transactions handled\nTeam leadership of 4 developers"
+            "40% faster development cycles (CICD & agile)\n1000+ monthly data transactions processed\nDeployed scalable production systems (Docker, AWS, Nginx)\nLed cross-functional teams (3-4 developers) to delivery"
           }
         </AnimatedSpan>
       </Terminal>
