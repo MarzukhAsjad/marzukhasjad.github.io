@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
         <TypingAnimation
           delay={2700}
           duration={30}
-          className="text-yellow-400 mt-4 text-lg"
+          className="text-yellow-400 mt-4 text-lg font-mono"
         >
           {"Skip to Blog >"}
         </TypingAnimation>
