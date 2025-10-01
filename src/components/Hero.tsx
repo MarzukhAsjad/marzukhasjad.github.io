@@ -12,7 +12,11 @@ const TerminalPage1: React.FC = () => (
       <AnimatedSpan delay={0} className="text-green-500">
         mizookie@localhost:~${" "}
       </AnimatedSpan>
-      <TypingAnimation duration={30} className="text-yellow-200 inline-block">
+      <TypingAnimation
+        delay={300}
+        duration={30}
+        className="text-yellow-200 inline-block"
+      >
         whoami
       </TypingAnimation>
     </div>
