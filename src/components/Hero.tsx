@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   AnimatedSpan,
   Terminal,
@@ -164,9 +165,9 @@ const Hero: React.FC = () => {
 
   return (
     <section className="min-h-screen text-white flex flex-col items-center px-4 sm:px-10 justify-center text-left bg-purple-950">
-      <div
-        className="mb-4 cursor-pointer hover:text-blue-300 transition-colors duration-200"
-        onClick={() => (window.location.href = "/blog")}
+      <Link
+        to="/blog"
+        className="mb-4 cursor-pointer hover:text-blue-300 transition-colors duration-200 block"
       >
         <TypingAnimation
           delay={2700}
@@ -175,7 +176,7 @@ const Hero: React.FC = () => {
         >
           {"Skip to Blog >"}
         </TypingAnimation>
-      </div>
+      </Link>
       <Terminal
         key={loopKey}
         className="w-full max-w-2xl mx-auto rounded-lg shadow-lg bg-amber-950"
