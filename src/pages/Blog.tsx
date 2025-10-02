@@ -9,7 +9,7 @@ import "highlight.js/styles/github-dark.css";
 const Blog: React.FC = () => {
   return (
     <div className="min-h-screen bg-purple-950 text-white">
-      <div className="container mx-auto px-30 py-8">
+      <div className="max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8">
         <header className="mb-8">
           <Link
             to="/"
@@ -66,15 +66,18 @@ const Blog: React.FC = () => {
                   const inline = !match;
                   return !inline ? (
                     <div className="mb-4 text-left">
-                      <pre className="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto text-left">
-                        <code className={className} {...props}>
+                      <pre className="bg-gray-900 text-green-400 p-2 sm:p-4 rounded-lg overflow-x-auto text-left">
+                        <code
+                          className={`${className} text-xs sm:text-sm`}
+                          {...props}
+                        >
                           {children}
                         </code>
                       </pre>
                     </div>
                   ) : (
                     <code
-                      className="bg-gray-700 text-green-300 px-1 py-0.5 rounded text-sm"
+                      className="bg-gray-700 text-green-300 px-1 py-0.5 rounded text-xs sm:text-sm"
                       {...props}
                     >
                       {children}
@@ -107,7 +110,7 @@ const Blog: React.FC = () => {
                   </div>
                 ),
                 blockquote: ({ children }) => (
-                  <blockquote className="border-l-4 border-gray-600 pl-4 italic text-gray-300 mb-4">
+                  <blockquote className="border-l-4 border-yellow-500 bg-yellow-900/20 pl-4 pr-4 py-3 rounded-r-lg italic text-yellow-200 mb-4 font-mono">
                     {children}
                   </blockquote>
                 ),
@@ -121,9 +124,17 @@ const Blog: React.FC = () => {
 
 ### Motive
 
+Microservices in a small-medium sized company are rather, dilemma moments. Do you go with them because the trend nowadays is spinning microservices? Like my friend works in a small bank and they have at least 9 microservices, one of which is literally adding 2 and 3 but on a slightly larger scale. But the funny thing is, now he can at least add to his resume:
+
+> Well versed with microservices architecture; Docker; Kubernetes.
+
+Happy for him to be honest, because I think recruiters ***dig*** for that sort of thing.
+
+But microservices are not always overkill, sometimes they are necessary. For example, you just onboarded a company as a project manager, and suddently you find out your company have some legacy REST APIs built in Java or PHP. 
+
 When your company starts to grow, so does the complexity of your systems and naturally, you will end up with having some microservices. If you created one API, and are currently serving less than 1000 users, and if you have some microservices for your single programming language/framework API, then nah, microservices are not worth it. But sometimes, even for a small user base, you happen to have some microservices built in completely different frameworks for different use cases. In my company for example, we have one microservice that handles customer enquiry reports, talking with third party services, and managing these reports, let's call it the credit enquiry service. We also have another microservice that is used internally by our operations team, i.e, the loan management system. These two systems are built in two different frameworks. The credit enquiry service is built with Java Spring Boot, whereas the loan management system is built with Node.js. I am not going to discuss the pros and cons of microservices here, but one of the challenges you will face is how to make these microservices communicate with each other.
 
-### Ideal assumptions
+### Some assumptions
 
 With any large system, we have to take some assumptions.
 
