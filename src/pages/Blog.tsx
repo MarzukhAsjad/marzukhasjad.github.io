@@ -46,6 +46,9 @@ const Blog: React.FC = () => {
               Webhooks communication between microservices
             </caption>
             <p className="text-gray-200 mb-4 text-justify">
+              <strong>Motive</strong>
+            </p>
+            <p className="text-gray-200 mb-4 text-justify">
               When your company starts to grow, so does the complexity of your
               systems and naturally, you will end up with having some
               microservices. If you created one API, and are currently serving
@@ -66,6 +69,9 @@ const Blog: React.FC = () => {
               to make these microservices communicate with each other.
             </p>
             <p className="text-gray-200 mb-4 text-justify">
+              <strong>Ideal assumptions</strong>
+            </p>
+            <p className="text-gray-200 mb-4 text-justify">
               With any large system, we have to take some assumptions.
             </p>
             <p className="text-gray-200 mb-1 text-justify">
@@ -82,6 +88,9 @@ const Blog: React.FC = () => {
               optimisations).
             </p>
             <p className="text-gray-200 mb-4 text-justify">
+              <strong>What are webhooks?</strong>
+            </p>
+            <p className="text-gray-200 mb-4 text-justify">
               A webhook is just stupidly simple. It is just a notification event
               in the form of an HTTP POST request. What does it expect back? A
               200 OK response. That's it. You can send any data you want in the
@@ -93,11 +102,13 @@ const Blog: React.FC = () => {
               webhook, and the receiver, which is the service that will handle
               the incoming webhook request.
             </p>
+            <p className="text-gray-200 mb-4 text-justify">
+              <strong>Sender service</strong>
+            </p>
             <code className="bg-gray-900 text-left text-green-400 p-4 rounded-lg block mb-4 overflow-x-auto">
               <pre>
                 <code>
-                  {`// Sender Service (e.g., Credit Enquiry Service)
-const sendWebhook = async (data) => {
+                  {`const sendWebhook = async (data) => {
   const response = await axios.post('https://loan-management-system.com/webhook', data);
   if (response.status === 200) {
     console.log('Webhook sent successfully');
@@ -108,11 +119,17 @@ const sendWebhook = async (data) => {
                 </code>
               </pre>
             </code>
+            <caption className="flex justify-center text-gray-500 text-sm mb-4">
+              Code snippet for sending a webhook from the credit enquiry
+              service.
+            </caption>
+            <p className="text-gray-200 mb-4 text-justify">
+              <strong>Receiver service</strong>
+            </p>
             <code className="bg-gray-900 text-left text-green-400 p-4 rounded-lg block mb-4 overflow-x-auto">
               <pre>
                 <code>
-                  {`// Receiver Service (e.g., Loan Management System)
-app.post('/webhook', (req, res) => {
+                  {`app.post('/webhook', (req, res) => {
   const data = req.body;
   // Process the incoming data
   console.log('Received webhook data:', data);
@@ -121,6 +138,10 @@ app.post('/webhook', (req, res) => {
                 </code>
               </pre>
             </code>
+            <caption className="flex justify-center text-gray-500 text-sm mb-4">
+              Code snippet for receiving a webhook in the loan management
+              system.
+            </caption>
             <p className="text-gray-200 mb-4 text-justify">
               In the receiver service, we can accordingly handle the webhook as
               a notification. Depending on the type of notification, which would
@@ -192,6 +213,11 @@ app.post('/webhook', (req, res) => {
               manually resend it (Do notify the IT Team by this point).
             </p>
             <p className="text-gray-200 mb-4 text-justify">
+              Honestly, the retry mechanism is the only con I can think of with
+              webhooks as it requires some additional infrastructure to store
+              failed events.
+            </p>
+            <p className="text-gray-200 mb-4 text-justify">
               <strong>Logging</strong>
             </p>
             <p className="text-gray-200 mb-4 text-justify">
@@ -205,12 +231,6 @@ app.post('/webhook', (req, res) => {
               <li>Status of the webhook delivery (success/failure)</li>
               <li>Response time and any error messages</li>
             </ul>
-            <p className="text-gray-200 mb-4 text-justify">
-              Honestly, the retry mechanism is the only con I can think of with
-              webhooks as it requires some additional infrastructure to store
-              failed events. Other than that, webhooks are simple, effective,
-              and easy to implement.
-            </p>
             <p className="text-gray-200 mb-4 text-justify">
               <strong>Scalability</strong>
             </p>
@@ -232,9 +252,12 @@ app.post('/webhook', (req, res) => {
               microservices has a further replica for load balancing, it can
               simply subscribe to the same webhook events without any additional
               configuration. Just make sure to put them behind a load balancer
-              to avoid duplicate processing of the same event. You can also use
-              this to create a zero downtime deployment strategy, but more about
-              that in another post.
+              like Nginx to avoid duplicate processing of the same event. You
+              can also use this to create a zero downtime deployment strategy,
+              but more about that in another post.
+            </p>
+            <p className="text-gray-200 mb-4 text-justify">
+              <strong>Conclusion</strong>
             </p>
             <p className="text-gray-200 mb-4 text-justify">
               Webhooks are a simple yet powerful way for microservices to
