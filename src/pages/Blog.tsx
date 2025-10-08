@@ -97,20 +97,28 @@ const Blog: React.FC = () => {
                 li: ({ children }) => (
                   <li className="mb-1 text-left pl-2">{children}</li>
                 ),
-                img: ({ src, alt }) => (
-                  <div className="flex flex-col items-center mb-4">
-                    <img
-                      src={src}
-                      alt={alt}
-                      className="rounded-2xl w-150 h-auto mb-2"
-                    />
-                    <caption className="text-gray-500 text-sm text-center">
-                      {alt}
-                    </caption>
-                  </div>
-                ),
+                img: ({ src, alt }) => {
+                  // Parse width from alt text if specified in format: alt text {width: 300px}
+                  const widthMatch = alt?.match(/\{width:\s*([^}]+)\}/);
+                  const width = widthMatch ? widthMatch[1] : "w-150";
+                  const cleanAlt =
+                    alt?.replace(/\{width:\s*[^}]+\}/, "").trim() || "";
+
+                  return (
+                    <div className="flex flex-col items-center mb-4">
+                      <img
+                        src={src}
+                        alt={cleanAlt}
+                        className={`rounded-2xl ${width} h-auto mb-2`}
+                      />
+                      <caption className="text-gray-500 text-sm text-center">
+                        {cleanAlt}
+                      </caption>
+                    </div>
+                  );
+                },
                 blockquote: ({ children }) => (
-                  <blockquote className="border-l-4 border-yellow-500 bg-yellow-900/20 pl-4 pr-4 py-3 rounded-r-lg italic text-yellow-200 mb-4 font-mono">
+                  <blockquote className="border-l-4 border-yellow-500 bg-yellow-900/20 pl-4 pr-4 py-3 rounded-r-lg italic text-yellow-200 mb-4 font-mono text-center [&>p]:mb-0 [&>p]:text-center">
                     {children}
                   </blockquote>
                 ),
@@ -124,13 +132,13 @@ const Blog: React.FC = () => {
 
 ### Motive
 
-Microservices in a small-medium sized company are rather, dilemma moments. Do you go with them because the trend nowadays is spinning microservices? Like my friend works in a small bank and they have at least 9 microservices, one of which is literally adding 2 and 3 but on a slightly larger scale. But the funny thing is, now he can at least add to his resume:
+Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices? For instance, a friend of mine works with a personal credit lender firm and they have at least 9 microservices, one of which is literally adding 2 and 3 but on a slightly larger scale.
 
-> Well versed with microservices architecture; Docker; Kubernetes.
+![Absolute Cinema 🙌{width: w-100}](/scooby_meme.png)
 
 Happy for him to be honest, because I think recruiters ***dig*** for that sort of thing.
 
-But microservices are not always overkill, sometimes they are necessary. For example, you just onboarded a company as a project manager, and suddently you find out your company have some legacy REST APIs built in Java or PHP. 
+But microservices are not always overkill, sometimes they are necessary. For example, you just onboarded a company as a project manager, and suddenly you find out your company have some legacy REST APIs built in Java or PHP.
 
 When your company starts to grow, so does the complexity of your systems and naturally, you will end up with having some microservices. If you created one API, and are currently serving less than 1000 users, and if you have some microservices for your single programming language/framework API, then nah, microservices are not worth it. But sometimes, even for a small user base, you happen to have some microservices built in completely different frameworks for different use cases. In my company for example, we have one microservice that handles customer enquiry reports, talking with third party services, and managing these reports, let's call it the credit enquiry service. We also have another microservice that is used internally by our operations team, i.e, the loan management system. These two systems are built in two different frameworks. The credit enquiry service is built with Java Spring Boot, whereas the loan management system is built with Node.js. I am not going to discuss the pros and cons of microservices here, but one of the challenges you will face is how to make these microservices communicate with each other.
 
