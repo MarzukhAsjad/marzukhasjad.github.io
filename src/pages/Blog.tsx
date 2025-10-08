@@ -138,7 +138,7 @@ Microservices are super beneficial for a large company, with a large subdivided 
 
 Happy for him to be honest, because I think recruiters ***dig*** for that sort of thing.
 
-But microservices are not always overkill, sometimes they are necessary. For example, you just onboarded a company as a project manager, and suddently you find out your company have some legacy REST APIs built in Java or PHP. 
+But microservices are not always overkill, sometimes they are necessary. For example, you just onboarded a company as a project manager, and suddenly you find out your company have some legacy REST APIs built in Java or PHP.
 
 When your company starts to grow, so does the complexity of your systems and naturally, you will end up with having some microservices. If you created one API, and are currently serving less than 1000 users, and if you have some microservices for your single programming language/framework API, then nah, microservices are not worth it. But sometimes, even for a small user base, you happen to have some microservices built in completely different frameworks for different use cases. In my company for example, we have one microservice that handles customer enquiry reports, talking with third party services, and managing these reports, let's call it the credit enquiry service. We also have another microservice that is used internally by our operations team, i.e, the loan management system. These two systems are built in two different frameworks. The credit enquiry service is built with Java Spring Boot, whereas the loan management system is built with Node.js. I am not going to discuss the pros and cons of microservices here, but one of the challenges you will face is how to make these microservices communicate with each other.
 
