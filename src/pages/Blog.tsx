@@ -98,11 +98,34 @@ const Blog: React.FC = () => {
                   <li className="mb-1 text-left pl-2">{children}</li>
                 ),
                 img: ({ src, alt }) => {
-                  // Parse width from alt text if specified in format: alt text {width: 300px}
-                  const widthMatch = alt?.match(/\{width:\s*([^}]+)\}/);
-                  const width = widthMatch ? widthMatch[1] : "w-150";
-                  const cleanAlt =
-                    alt?.replace(/\{width:\s*[^}]+\}/, "").trim() || "";
+                  // Parse width from alt text if specified in format: alt text {width: w-100}
+                  // Predefined width classes that Tailwind will recognize
+                  const validWidths: { [key: string]: string } = {
+                    "w-50": "w-50",
+                    "w-75": "w-75",
+                    "w-100": "w-100",
+                    "w-150": "w-150",
+                    "w-200": "w-200",
+                    "w-32": "w-32",
+                    "w-64": "w-64",
+                    "w-96": "w-96",
+                    "w-full": "w-full",
+                    "w-1/2": "w-1/2",
+                    "w-1/3": "w-1/3",
+                    "w-2/3": "w-2/3",
+                  };
+
+                  let width = "w-150"; // default
+                  let cleanAlt = alt || "";
+
+                  if (alt && alt.includes("{width:")) {
+                    const widthMatch = alt.match(/\{width:\s*([^}]+)\}/);
+                    if (widthMatch && widthMatch[1]) {
+                      const requestedWidth = widthMatch[1].trim();
+                      width = validWidths[requestedWidth] || "w-150";
+                      cleanAlt = alt.replace(/\{width:\s*[^}]+\}/, "").trim();
+                    }
+                  }
 
                   return (
                     <div className="flex flex-col items-center mb-4">
@@ -136,23 +159,30 @@ Microservices are super beneficial for a large company, with a large subdivided 
 
 ![Absolute Cinema 🙌{width: w-100}](/scooby_meme.png)
 
-Happy for him to be honest, because I think recruiters ***dig*** for that sort of thing.
+Did I forget to mention that I am that friend? Just kidding... *or am I?*
 
-But microservices are not always overkill, sometimes they are necessary. For example, you just onboarded a company as a project manager, and suddenly you find out your company have some legacy REST APIs built in Java or PHP.
+See, microservices are not always overkill, sometimes they are necessary. For example, you just onboarded a company as a project manager, and suddenly you find out your company has some legacy REST APIs built in Java or PHP. What is the first thing you do? Rewrite them in modern frameworks like FastAPI and Express? ***HELL NAW!***
 
-When your company starts to grow, so does the complexity of your systems and naturally, you will end up with having some microservices. If you created one API, and are currently serving less than 1000 users, and if you have some microservices for your single programming language/framework API, then nah, microservices are not worth it. But sometimes, even for a small user base, you happen to have some microservices built in completely different frameworks for different use cases. In my company for example, we have one microservice that handles customer enquiry reports, talking with third party services, and managing these reports, let's call it the credit enquiry service. We also have another microservice that is used internally by our operations team, i.e, the loan management system. These two systems are built in two different frameworks. The credit enquiry service is built with Java Spring Boot, whereas the loan management system is built with Node.js. I am not going to discuss the pros and cons of microservices here, but one of the challenges you will face is how to make these microservices communicate with each other.
+> If it ain't broke, don't fix it. -- Albert Einstein
+
+When your company starts to grow, so does the complexity of your systems and naturally, you will end up with having some microservices. Sometimes, even for a small user base, you happen to have some microservices built in completely different frameworks for different use cases. In my company for example, we have one microservice that handles customer enquiry reports, talking with third party services, and managing these reports, let's call it the credit enquiry service. We also have another microservice that is used internally by our operations team, i.e, the loan management system. These two systems are built in two different frameworks. The credit enquiry service was built with Java Spring Boot, i.e the legacy framework, whereas the loan management system has been built on Node.js, with modern options in mind. This article does not cover the advantages and disadvantages of microservices, but if you're in a similar situation and have decided to adopt microservices, one of the challenges you will face is how to make these microservices communicate with each other. This article precisely covers that.
 
 ### Some assumptions
 
 With any large system, we have to take some assumptions.
 
-1. These microservices are not allowed to directly access each other's database.
-2. They are REST API based.
+1. These microservices are not allowed to directly access each other's database (If they are, then you have a weird case, could have just made it a monolith).
+2. They are RESTful defined API based.
 3. Your distributed system does not handle excessively large traffic, like in the scale of millions of requests per second (even then it would technically be fine but requires further optimisations).
+4. You are learning or have some knowledge in the legacy framework that one of your microservices is built on (if not, then just learn it, it's inevitable, assuming you **do** have a legacy system).
 
 ### What are webhooks?
 
-A webhook is just stupidly simple. It is just a notification event in the form of an HTTP POST request. What does it expect back? A 200 OK response. That's it. You can send any data you want in the body of the POST request, usually in JSON format. The receiving service can then process this data as needed. This simplicity is what makes webhooks so powerful and easy to implement. So to make a webhook work, you need both sides of the communication to be set up. The sender, which is the service that will trigger the webhook, and the receiver, which is the service that will handle the incoming webhook request.
+A webhook is just stupidly simple. It is just a notification event in the form of an HTTP POST request. It doesn't even expect back anything. But, a 200 OK response would be nice to let the sender know that the request was received successfully.
+
+![image](https://via.placeholder.com/150)
+
+You can send any data you want in the body of the POST request, usually in JSON format. The receiving service can then process this data as needed. This simplicity is what makes webhooks so powerful and easy to implement. So to make a webhook work, you need both sides of the communication to be set up. The sender, which is the service that will trigger the webhook, and the receiver, which is the service that will handle the incoming webhook request.
 
 ### Sender service
 
