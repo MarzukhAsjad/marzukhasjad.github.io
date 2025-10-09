@@ -212,11 +212,11 @@ With any large system, we have to take some assumptions.
 
 A webhook is just stupidly simple. It comprises of a notification event in the form of an HTTP POST request to an endpoint (the webhook URL). It may not even expect back anything. But, a 200 OK response would be nice to let the sender know that the request was received successfully.
 
-![Webhook communication via REST API](/http_post.png)
+![Webhook communication via REST API](/http_post_request.png)
 
 You can send any data you want in the body of the POST request, usually in JSON format. The receiving service can then process this data as needed. This simplicity is what makes webhooks so powerful and easy to implement. So to make a webhook work, you need both sides of the communication to be set up. The sender, which is the service that will trigger the webhook, and the receiver, which is the service that will handle the incoming webhook request.
 
-### Sender service
+##### Sender service
 
 \`\`\`javascript
 const sendWebhook = async (data) => {
@@ -231,7 +231,7 @@ const sendWebhook = async (data) => {
 
 *Code snippet for sending a webhook event from the credit enquiry service.*
 
-### Receiver service
+##### Receiver service
 
 \`\`\`javascript
 app.post('/webhook', (req, res) => {
@@ -246,7 +246,27 @@ app.post('/webhook', (req, res) => {
 
 In the receiver service, we can accordingly handle the webhook as a notification. Depending on the type of notification, which would be specified in the body of the POST request, we can then trigger different actions. For example, if the credit enquiry service sends a notification that a new credit report is available for download, the loan management system can then fetch this report and update its records.
 
-What we have here is a simple yet effective way for two different microservices to communicate with each other without directly accessing each other's databases. While this is simple, we can now build upon this foundation to add more features, such as security, retries, and logging, to make our webhook communication more robust and secure. I will also discuss how webhooks can assist with scalability of distributed systems.
+\`\`\`javascript
+const type = data.type; // e.g., the data is the req.body, i.e the payload of the webhook event
+
+switch (type) {
+  case 'report_ready':
+    // Handle new report notification
+    fetchAndStoreReport(data.reportId);
+    break;
+  case 'report_corrupted':
+    // Handle report corrupted notification
+    handleCorruptedReport(data.reportId);
+    break;
+  default:
+    console.warn('Unknown webhook type:', type);
+}
+\`\`\`
+
+*Code snippet for handling different types of webhook notifications.*
+
+
+What we have here is a simple yet effective way for two different microservices to communicate with each other without directly accessing each other's databases. While this is simple, we can now build upon this foundation to add more features, such as **security**, **retries**, and **logging**, to make our webhook communication more robust and secure. I will also discuss how webhooks can assist with **scalability** of distributed systems.
 
 ### Security
 
@@ -272,9 +292,38 @@ Regardless, just combine all the methods if possible. Security is not something 
 
 ### Retry Mechanism
 
-Network issues or temporary server problems can cause webhook deliveries to fail. To handle this, we can implement a retry mechanism in the sender service. If a webhook delivery fails (e.g., due to a timeout or a 5xx error), the sender can automatically retry the delivery after a short delay. This can be done using a simple exponential backoff strategy, where the delay increases with each successive failure, for example, 1s, 2s, 4s, 8s, etc. We can also set a maximum number of retries to avoid infinite loops. The only issue with this is that failed webhook events will have to be stored somewhere, like in a database or a message queue, until they are successfully delivered or reach the maximum retry limit. If after the maximum retries the webhook event is still not delivered, ensure that you have the option to manually resend it (Do notify the IT Team by this point).
+Network issues or temporary server problems can cause webhook deliveries to fail. To handle this, we can implement a retry mechanism in the sender service. If a webhook delivery fails (e.g., due to a timeout or a 5xx error), the sender can automatically retry the delivery after a short delay. This can be done using a simple exponential backoff strategy, where the delay increases with each successive failure, for example, 1s, 2s, 4s, 8s, etc. We can also set a maximum number of retries to avoid infinite loops. The only issue with this is that failed webhook events will have to be stored somewhere, like in a database or a message queue, until they are successfully delivered or reach the maximum retry limit. If after the maximum retries the webhook event is still not delivered, ensure that you have the option to manually resend it (you might want to notify the IT Team by this point, or you).
 
-Honestly, the retry mechanism is the only con I can think of with webhooks as it requires some additional infrastructure to store failed events.
+\`\`\`javascript
+while (attempt < maxRetries) \{
+  try \{
+    const response = await axios.post(webhookUrl, data, \{
+      timeout: 10000, // 10 second timeout
+    \});
+    
+    if (response.status === 200) \{
+      console.log('Webhook sent successfully');
+    \}
+  \} catch (error) \{
+    console.log(\`Webhook attempt \$\{attempt + 1\} failed:\`, error.message);
+  \}
+  
+  attempt++;
+  
+  if (attempt < maxRetries) \{
+    // Exponential backoff: 1s, 2s, 4s, 8s, 16s...
+    const delay = Math.pow(2, attempt) * 1000;
+    console.log(\`Retrying in \$\{delay\}ms...\`);
+    await new Promise(resolve => setTimeout(resolve, delay));
+  \}
+\}
+
+console.error(\`Webhook failed after \$\{maxRetries\} attempts\`);
+\`\`\`
+
+*Simple retry mechanism with exponential backoff for webhook delivery.*
+
+The retry mechanism is one of the disadvantages I can think of with webhooks as it requires some additional infrastructure to store failed events.
 
 ### Logging
 
@@ -284,6 +333,8 @@ Implementing logging for webhook events is crucial for monitoring and debugging 
 - Timestamp of the event
 - Status of the webhook delivery (success/failure)
 - Response time and any error messages
+
+These should not just be logged to the console/terminal, but also stored in a persistent storage solution like a database or a log management system. This way, you can easily query and analyze the logs to identify patterns or issues with webhook deliveries. Additionally, consider setting up alerts for repeated failures or other anomalies in webhook processing to proactively address potential issues. A method to resend failed webhook events manually would also be beneficial. Some popular observability tools include [Prometheus + Grafana](https://www.geeksforgeeks.org/devops/what-is-prometheus-and-grafana/), [Pydantic Logfire](https://pydantic.dev/logfire) and many more. In my startup, we implemented Logfire to integrate with our FastAPI micro-services because it is super simple to set up, seamlessly blends with our AI services, and has a very user-friendly dashboard. I will write another article about how to setup Logfire to monitor your microservices soon.
 
 ### Scalability
 
