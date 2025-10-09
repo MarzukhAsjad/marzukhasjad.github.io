@@ -39,7 +39,9 @@ const Blog: React.FC = () => {
                 </h3>
               ),
               p: ({ children }) => (
-                <p className="text-gray-200 mb-4 text-left">{children}</p>
+                <p className="font-inter text-gray-200 mb-4 text-left">
+                  {children}
+                </p>
               ),
               h4: ({ children }) => (
                 <h4 className="text-lg font-medium mb-4 text-gray-400 text-center italic">
