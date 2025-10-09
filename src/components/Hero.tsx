@@ -170,7 +170,7 @@ const Hero: React.FC = () => {
         className="mb-4 cursor-pointer hover:text-blue-300 transition-colors duration-200 block"
       >
         <TypingAnimation
-          delay={2700}
+          delay={2300}
           duration={30}
           className="text-yellow-400 mt-4 text-sm sm:text-lg font-mono"
         >

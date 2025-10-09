@@ -333,12 +333,17 @@ Implementing logging for webhook events is crucial for monitoring and debugging 
 - Timestamp of the event
 - Status of the webhook delivery (success/failure)
 - Response time and any error messages
+- Attempt count for retries
 
-These should not just be logged to the console/terminal, but also stored in a persistent storage solution like a database or a log management system. This way, you can easily query and analyze the logs to identify patterns or issues with webhook deliveries. Additionally, consider setting up alerts for repeated failures or other anomalies in webhook processing to proactively address potential issues. A method to resend failed webhook events manually would also be beneficial. Some popular observability tools include [Prometheus + Grafana](https://www.geeksforgeeks.org/devops/what-is-prometheus-and-grafana/), [Pydantic Logfire](https://pydantic.dev/logfire) and many more. In my startup, we implemented Logfire to integrate with our FastAPI micro-services because it is super simple to set up, seamlessly blends with our AI services, and has a very user-friendly dashboard. I will write another article about how to setup Logfire to monitor your microservices soon.
+These should not just be logged to the console/terminal, but also stored in a persistent storage solution like a database or a log management system. This way, you can easily query and analyze the logs to identify patterns or issues with webhook deliveries. It might seem a huge pain to set this up, but buddy, trust me, when a customer is calling you because they did not get their subscribed content after paying for it, and your terminal output just magically disappeared, the last thing you want is for your paid user count to drop from 2 to 0.
+
+!["Sir, please tell me you remember the unique transaction ID that appeared in the URL when you paid?" 😭😭{width: w-75}](/pls_gif.gif)
+
+ Additionally, consider setting up alerts for repeated failures or other anomalies in webhook processing to proactively address potential issues. A method to resend failed webhook events manually would also be beneficial to catch up on missed events. Some popular observability tools include [Prometheus + Grafana](https://www.geeksforgeeks.org/devops/what-is-prometheus-and-grafana/), [Pydantic Logfire](https://pydantic.dev/logfire) and many more. In my startup, we implemented Logfire to integrate with our FastAPI micro-services because it is super simple to set up, seamlessly blends with our AI services, and has a very user-friendly dashboard. In the future, I will write about how to setup Logfire to monitor your microservices.
 
 ### Scalability
 
-As your system grows, the number of webhook events may increase significantly. To handle this increased load, consider using a message queue (e.g., RabbitMQ, Kafka) to decouple the sender and receiver services. The sender can publish webhook events to the queue, and the receiver can consume these events at its own pace. This helps to prevent overloading the receiver service and ensures that webhook events are processed reliably.
+As your system grows, the number of webhook events may increase significantly. To handle this increased load, consider using a message queue (e.g., RabbitMQ, Kafka) to decouple the sender and receiver services. The sender can publish webhook events to the queue, and the receiver can consume these events at its own pace. This helps to prevent overloading the receiver service and ensures that webhook events are processed reliably. Your system will officially then have incorporated **event-driven architecture** (+1 to your resume).
 
 Because it is loosely coupled, webhooks allow for greater flexibility in your system architecture. You can easily add or remove services without affecting the overall communication flow. Each service can process events independently, making it easier to scale and maintain your system over time. If one of your microservices has a further replica for load balancing, it can simply subscribe to the same webhook events without any additional configuration. Just make sure to put them behind a load balancer like Nginx to avoid duplicate processing of the same event. You can also use this to create a zero downtime deployment strategy, but more about that in another post.
 
@@ -351,7 +356,7 @@ If you have read this far, thank you!`)}
             <div className="flex items-center text-sm text-gray-500 mt-6">
               <span>Marzukh Akib Asjad</span>
               <span className="mx-2">•</span>
-              <span>Coming Soon</span>
+              <span>09/10/2025</span>
             </div>
           </article>
         </div>
