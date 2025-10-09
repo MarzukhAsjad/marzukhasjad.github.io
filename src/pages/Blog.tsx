@@ -39,7 +39,7 @@ const Blog: React.FC = () => {
                 </h3>
               ),
               p: ({ children }) => (
-                <p className="font-inter text-gray-200 mb-4 text-left">
+                <p className="font-inter text-gray-200 mb-4 text-justify">
                   {children}
                 </p>
               ),
@@ -135,7 +135,7 @@ const Blog: React.FC = () => {
                 );
               },
               blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-yellow-500 bg-yellow-900/20 pl-4 pr-4 py-3 rounded-r-lg italic text-yellow-200 mb-4 font-mono text-center [&>p]:mb-0 [&>p]:text-center">
+                <blockquote className="border-l-4 border-yellow-500 bg-yellow-900/20 pl-4 pr-4 py-3 rounded-r-lg italic text-yellow-200 mb-4 font-mono text-center [&>p]:mb-0 [&>p]:text-center [&>p]:font-mono [&>p]:italic">
                   {children}
                 </blockquote>
               ),
@@ -197,7 +197,7 @@ Did I forget to mention that I am that friend? Just kidding... *or am I?*
 
 See, microservices are not always overkill, sometimes they are necessary. For example, you just onboarded a company as a project manager, and suddenly you find out your company has some legacy REST APIs built in Java or PHP. What is the first thing you do? Rewrite them in modern frameworks like FastAPI and Express? ***HELL NAW!***
 
-> If it ain't broke, don't fix it. -- Albert Einstein
+> "If it ain't broke, don't fix it." -- Albert Einstein
 
 When your company starts to grow, so does the complexity of your systems and naturally, you will end up with having some microservices. Sometimes, even for a small user base, you happen to have some microservices built in completely different frameworks for different use cases. In my company for example, we have one microservice that handles customer enquiry reports, talking with third party services, and managing these reports, let's call it the credit enquiry service. We also have another microservice that is used internally by our operations team, i.e, the loan management system. These two systems are built in two different frameworks. The credit enquiry service was built with Java Spring Boot, whereas the loan management system has been built on Node.js. This article does not cover the advantages and disadvantages of microservices, but if you're in a similar situation and have decided to adopt microservices, one of the challenges you will face is how to make these microservices communicate with each other. This article precisely covers that.
 

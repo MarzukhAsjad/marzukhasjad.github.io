@@ -99,10 +99,10 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ content }) => {
 
       {showExplanation && (
         <div className="mt-8 mb-2 p-4 bg-blue-900/30 rounded-lg border-l-4 border-blue-400">
-          <h6 className="text-blue-300 text-left font-semibold mb-2">
+          <h6 className="text-blue-300 text-left font-bold mb-2">
             Explanation:
           </h6>
-          <div className="text-blue-100 text-left [&>p]:mb-2 [&>strong]:text-white">
+          <div className="font-inter text-blue-100 text-left [&>p]:mb-2 [&>strong]:text-white">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {explanation}
             </ReactMarkdown>
