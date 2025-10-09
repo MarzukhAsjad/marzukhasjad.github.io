@@ -58,6 +58,11 @@ const Blog: React.FC = () => {
                     {children}
                   </h4>
                 ),
+                h5: ({ children }) => (
+                  <h5 className="text-base font-semibold mb-3 text-purple-300 text-left">
+                    {children}
+                  </h5>
+                ),
                 strong: ({ children }) => (
                   <strong className="font-bold text-white">{children}</strong>
                 ),
@@ -165,20 +170,20 @@ See, microservices are not always overkill, sometimes they are necessary. For ex
 
 > If it ain't broke, don't fix it. -- Albert Einstein
 
-When your company starts to grow, so does the complexity of your systems and naturally, you will end up with having some microservices. Sometimes, even for a small user base, you happen to have some microservices built in completely different frameworks for different use cases. In my company for example, we have one microservice that handles customer enquiry reports, talking with third party services, and managing these reports, let's call it the credit enquiry service. We also have another microservice that is used internally by our operations team, i.e, the loan management system. These two systems are built in two different frameworks. The credit enquiry service was built with Java Spring Boot, i.e the legacy framework, whereas the loan management system has been built on Node.js, with modern options in mind. This article does not cover the advantages and disadvantages of microservices, but if you're in a similar situation and have decided to adopt microservices, one of the challenges you will face is how to make these microservices communicate with each other. This article precisely covers that.
+When your company starts to grow, so does the complexity of your systems and naturally, you will end up with having some microservices. Sometimes, even for a small user base, you happen to have some microservices built in completely different frameworks for different use cases. In my company for example, we have one microservice that handles customer enquiry reports, talking with third party services, and managing these reports, let's call it the credit enquiry service. We also have another microservice that is used internally by our operations team, i.e, the loan management system. These two systems are built in two different frameworks. The credit enquiry service was built with Java Spring Boot, i.e the legacy framework (*I feel like someone is going to hunt me for calling Spring Boot a legacy framework*), whereas the loan management system has been built on Node.js, with modern options in mind. This article does not cover the advantages and disadvantages of microservices, but if you're in a similar situation and have decided to adopt microservices, one of the challenges you will face is how to make these microservices communicate with each other. This article precisely covers that.
 
 ### Some assumptions
 
 With any large system, we have to take some assumptions.
 
 1. These microservices are not allowed to directly access each other's database (If they are, then you have a weird case, could have just made it a monolith).
-2. They are RESTful defined API based.
+2. They are RESTful APIs (you could still apply the same concept to other types of APIs).
 3. Your distributed system does not handle excessively large traffic, like in the scale of millions of requests per second (even then it would technically be fine but requires further optimisations).
-4. You are learning or have some knowledge in the legacy framework that one of your microservices is built on (if not, then just learn it, it's inevitable, assuming you **do** have a legacy system).
+4. You have knowledge of (or are learning) the framework for all the microservices involved.
 
 ### What are webhooks?
 
-A webhook is just stupidly simple. It is just a notification event in the form of an HTTP POST request. It doesn't even expect back anything. But, a 200 OK response would be nice to let the sender know that the request was received successfully.
+A webhook is just stupidly simple. It comprises of a notification event in the form of an HTTP POST request to an endpoint (the webhook URL). It may not even expect back anything. But, a 200 OK response would be nice to let the sender know that the request was received successfully.
 
 ![image](https://via.placeholder.com/150)
 
@@ -197,7 +202,7 @@ const sendWebhook = async (data) => {
 };
 \`\`\`
 
-*Code snippet for sending a webhook from the credit enquiry service.*
+*Code snippet for sending a webhook event from the credit enquiry service.*
 
 ### Receiver service
 
@@ -210,7 +215,7 @@ app.post('/webhook', (req, res) => {
 });
 \`\`\`
 
-*Code snippet for receiving a webhook in the loan management system.*
+*Code snippet for receiving a webhook event in the loan management system.*
 
 In the receiver service, we can accordingly handle the webhook as a notification. Depending on the type of notification, which would be specified in the body of the POST request, we can then trigger different actions. For example, if the credit enquiry service sends a notification that a new credit report is available for download, the loan management system can then fetch this report and update its records.
 
@@ -220,13 +225,22 @@ What we have here is a simple yet effective way for two different microservices 
 
 We now have to add the security layer. Since webhooks are just HTTP requests, they can be vulnerable to various attacks from malicious actors. To secure our webhooks, we can implement one of the following methods:
 
-1. **Authentication**: We can use API keys or tokens to authenticate the sender of the webhook. The receiver service will then verify this key/token before processing the request. Basically, we are saying here that only requests with the correct key/token will be accepted.
+1. **Authentication**: We can use API keys or tokens to authenticate the sender of the webhook. The receiver service will then verify this key/token before processing the request. Basically, we are saying here that only requests with the correct key/token will be accepted. We can further enhance this by introducing Multi-Factor Authentication (MFA) if needed.
 
 2. **Signature Verification**: The sender can include a signature in the headers of the webhook request. The receiver can then use a shared secret to verify this signature, ensuring that the request has not been tampered with. This adds an extra layer of security, as only the sender and receiver know the shared secret.
 
 3. **HTTPS**: Always use HTTPS to encrypt the data being transmitted. Try to do this by default.
 
 4. **IP Whitelisting**: If possible, restrict incoming webhook requests to known IP addresses. This adds an additional layer of security by ensuring that only requests from trusted sources are processed.
+
+##### ***Short quiz:***
+\question Which method could protect your microservices against a [man-in-the-middle](https://www.ibm.com/think/topics/man-in-the-middle) attacks?
+\option_wrong Signature Verification
+\option_wrong Authentication
+\option_correct Mixture of both
+\explanation The correct answer is **C. Mixture of both**. Implementing simple bearer token authentication alone makes your system vulnerable to man-in-the-middle attacks, as an attacker could intercept the token and reuse it. Signature verification alone also has its limitations, as it does not authenticate the sender. By combining both methods, you ensure that the sender is authenticated (via the token) and that the request has not been tampered with (via signature verification).
+
+Regardless, just combine all the methods if possible. Security is not something to be taken lightly.
 
 ### Retry Mechanism
 
