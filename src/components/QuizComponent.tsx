@@ -70,10 +70,10 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ content }) => {
               option.isCorrect
             )} cursor-pointer`}
           >
-            <span className="font-medium">
+            <span className="font-medium text-orange-500">
               {String.fromCharCode(65 + index)}.
             </span>{" "}
-            {option.text}
+            <span className="text-gray-500">{option.text}</span>
           </button>
         ))}
       </div>
