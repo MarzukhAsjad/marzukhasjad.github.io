@@ -42,13 +42,32 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ content }) => {
     setShowExplanation(true);
   };
 
-  const getOptionStyle = (optionText: string, isCorrect: boolean) => {
-    if (!selectedOption || selectedOption !== optionText) {
-      return "bg-gray-700 hover:bg-gray-600 text-gray-200 border-gray-600";
+  const getOptionStyle = () => {
+    return "bg-gray-700 hover:bg-gray-600 text-gray-200 border-gray-600";
+  };
+
+  const getOptionIcon = (optionText: string, isCorrect: boolean) => {
+    if (!selectedOption) {
+      return "";
     }
-    return isCorrect
-      ? "bg-green-600 text-white border-green-500"
-      : "bg-red-600 text-white border-red-500";
+
+    // If this option is the one that was selected
+    if (selectedOption === optionText) {
+      return isCorrect ? " ✅" : " ❌";
+    }
+
+    // If a wrong option was selected, show checkmark for the correct option
+    const selectedOptionData = options.find(
+      (opt) => opt.text === selectedOption
+    );
+    const wasWrongOptionSelected =
+      selectedOptionData && !selectedOptionData.isCorrect;
+
+    if (wasWrongOptionSelected && isCorrect) {
+      return " ✅";
+    }
+
+    return "";
   };
 
   return (
@@ -65,15 +84,15 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ content }) => {
           <button
             key={index}
             onClick={() => handleOptionClick(option.text)}
-            className={`w-full p-3 rounded-full text-left transition-all duration-200 border-2 ${getOptionStyle(
-              option.text,
-              option.isCorrect
-            )} cursor-pointer`}
+            className={`w-full p-3 rounded-full text-left transition-all duration-200 border-2 ${getOptionStyle()} cursor-pointer`}
           >
             <span className="font-medium text-orange-500">
               {String.fromCharCode(65 + index)}.
             </span>{" "}
-            <span className="text-gray-500">{option.text}</span>
+            <span className="text-gray-500">
+              {option.text}
+              {getOptionIcon(option.text, option.isCorrect)}
+            </span>
           </button>
         ))}
       </div>
