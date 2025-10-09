@@ -212,7 +212,7 @@ With any large system, we have to take some assumptions.
 
 A webhook is just stupidly simple. It comprises of a notification event in the form of an HTTP POST request to an endpoint (the webhook URL). It may not even expect back anything. But, a 200 OK response would be nice to let the sender know that the request was received successfully.
 
-![image](https://via.placeholder.com/150)
+![Webhook communication via REST API](/http_post.png)
 
 You can send any data you want in the body of the POST request, usually in JSON format. The receiving service can then process this data as needed. This simplicity is what makes webhooks so powerful and easy to implement. So to make a webhook work, you need both sides of the communication to be set up. The sender, which is the service that will trigger the webhook, and the receiver, which is the service that will handle the incoming webhook request.
 
@@ -261,14 +261,14 @@ We now have to add the security layer. Since webhooks are just HTTP requests, th
 4. **IP Whitelisting**: If possible, restrict incoming webhook requests to known IP addresses. This adds an additional layer of security by ensuring that only requests from trusted sources are processed.
 
 \\quiz_start
-\\question Which method could protect your microservices against a [man-in-the-middle](https://www.ibm.com/think/topics/man-in-the-middle) attacks?
+\\question Which method could protect your microservices against a [man-in-the-middle](https://www.ibm.com/think/topics/man-in-the-middle) attack?
 \\option_wrong Signature Verification
 \\option_wrong Authentication
 \\option_correct Mixture of both
 \\explanation The correct answer is **C. Mixture of both**. Implementing simple bearer token authentication alone makes your system vulnerable to man-in-the-middle attacks, as an attacker could intercept the token and reuse it. Signature verification alone also has its limitations, as it does not authenticate the sender. By combining both methods, you ensure that the sender is authenticated (via the token) and that the request has not been tampered with (via signature verification).
 \\quiz_end
 
-Regardless, just combine all the methods if possible. Security is not something to be taken lightly.
+Regardless, just combine all the methods if possible. Security is not something to be taken lightly. You do not want those 10 users to sue you because of a data breach.
 
 ### Retry Mechanism
 
