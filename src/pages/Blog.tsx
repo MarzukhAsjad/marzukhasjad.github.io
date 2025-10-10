@@ -40,8 +40,8 @@ const Blog = () => {
 
             {/* More Blog Posts Coming Soon */}
             <div className="text-center">
-              <h3 className="text-2xl font-mono font-semibold text-white mb-4">
-                More Posts Coming Soon ⏳
+              <h3 className="text-2xl font-mono font-semibold text-white mb-6 mt-12">
+                More Posts Coming Soon
               </h3>
               <p className="text-gray-300 text-lg font-inter">
                 I'm working on more exciting blog posts about software

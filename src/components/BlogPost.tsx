@@ -9,9 +9,11 @@ import QuizComponent from "@/components/QuizComponent";
 
 interface BlogProps {
   content: string;
+  author: string;
+  date: string;
 }
 
-const BlogPost: React.FC<BlogProps> = ({ content }) => {
+const BlogPost: React.FC<BlogProps> = ({ content, author, date }) => {
   // Function to process markdown content and extract quizzes
   const processContent = (content: string) => {
     const parts: React.ReactElement[] = [];
@@ -169,7 +171,7 @@ const BlogPost: React.FC<BlogProps> = ({ content }) => {
             to="/blog"
             className="mt-4 text-sm sm:text-lg !text-yellow-400 font-mono mb-4 inline-block hover:!text-yellow-600 transition-colors"
           >
-            ← Back to Blogs
+            ← Back to Blog
           </Link>
           <h1 className="text-4xl font-bold mb-2 text-pink-300 font-serif">
             Blog
@@ -188,9 +190,9 @@ const BlogPost: React.FC<BlogProps> = ({ content }) => {
             {processContent(content)}
 
             <div className="flex items-center text-sm text-gray-500 mt-6">
-              <span>Marzukh Akib Asjad</span>
+              <span>{author}</span>
               <span className="mx-2">•</span>
-              <span>09/10/2025</span>
+              <span>{date}</span>
             </div>
           </article>
         </div>
