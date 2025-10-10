@@ -11,7 +11,7 @@ interface BlogProps {
   content: string;
 }
 
-const Blog: React.FC<BlogProps> = ({ content }) => {
+const BlogPost: React.FC<BlogProps> = ({ content }) => {
   // Function to process markdown content and extract quizzes
   const processContent = (content: string) => {
     const parts: React.ReactElement[] = [];
@@ -199,4 +199,4 @@ const Blog: React.FC<BlogProps> = ({ content }) => {
   );
 };
 
-export default Blog;
+export default BlogPost;

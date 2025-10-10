@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import blog1 from "./content/blog1";
+import Blog from "./pages/Blog";
+import blog1 from "./posts/blog1";
 import "./App.css";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App w-screen min-h-screen bg-black overflow-x-hidden">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
         <Route
           path="/blog/secure-modularised-microservices-with-webhooks-communication"
           element={blog1()}
