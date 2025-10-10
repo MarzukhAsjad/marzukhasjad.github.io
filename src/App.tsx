@@ -16,7 +16,7 @@ function App() {
           element={blog1()}
         />
         <Route
-          path="/blog/b2b-success-hinges-on-customer-convenience"
+          path="/blog/b2c-success-hinges-on-customer-convenience"
           element={blog2()}
         />
       </Routes>
