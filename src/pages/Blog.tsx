@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { TypingAnimation } from "@/components/magicui/terminal";
+import BlogPreview from "@/components/BlogPreview";
 
 const Blog = () => {
   return (
@@ -23,15 +24,33 @@ const Blog = () => {
             {"Dumping thoughts, tutorials, and insights..."}
           </TypingAnimation>
         </header>
-        <div className="space-y-8">
-          <article className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <div className="text-gray-300">
-              This will contain post tiles, clicking them will redirect to the
-              specific post. The tiles will have a title, sub-title, image
-              preview, a short description, author and the created date
+        <article className="bg-gray-800 rounded-lg p-6 border border-gray-700 flex justify-center">
+          <div className="space-y-8 w-175 mt-4">
+            {/* Featured Blog Post */}
+            <BlogPreview
+              title="Secure modularised microservices with webhooks communication"
+              subtitle="How to communicate using webhooks between REST API based microservices while maintaining simplicity, security and modularity."
+              imageUrl="/blog1/webhook_post_image.png"
+              description="Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices? For instance, a friend of mine works with a personal credit lender firm and they have at least 9 microservices, one of which is literally adding 2 and 3 but on a slightly larger scale."
+              slug="secure-modularised-microservices-with-webhooks-communication"
+              author="Marzukh Akib Asjad"
+              createdDate="10/10/2025"
+              featured={true}
+            />
+
+            {/* More Blog Posts Coming Soon */}
+            <div className="text-center">
+              <h3 className="text-2xl font-mono font-semibold text-white mb-4">
+                More Posts Coming Soon ⏳
+              </h3>
+              <p className="text-gray-300 text-lg font-inter">
+                I'm working on more exciting blog posts about software
+                development, entrepreneurship, tech insights, and my programming
+                journey. So check back soon!
+              </p>
             </div>
-          </article>
-        </div>
+          </div>
+        </article>
       </div>
     </div>
   );
