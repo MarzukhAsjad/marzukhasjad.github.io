@@ -47,12 +47,12 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
         </div>
 
         <div className="p-6">
-          <h2 className="text-2xl font-bold mb-2 text-pink-300 font-serif group-hover:text-pink-200 transition-colors">
+          <h2 className="text-2xl font-semibold mb-3 text-green-500 font-mono text-center group-hover:text-cyan-300 transition-colors">
             {title}
           </h2>
 
           {subtitle && (
-            <h3 className="text-lg text-blue-400 font-mono mb-3 opacity-90">
+            <h3 className="text-lg font-medium mb-4 text-gray-400 text-center italic group-hover:text-green-500 transition-colors">
               {subtitle}
             </h3>
           )}
