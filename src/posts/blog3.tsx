@@ -6,7 +6,7 @@ const blog3 = () => {
     <BlogPost
       content={blog3Content}
       author="Marzukh Akib Asjad"
-      date="09/10/2025"
+      date="09/12/2025"
     />
   );
 };

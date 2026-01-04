@@ -55,6 +55,18 @@ const Blog = () => {
                   featured={false}
                 />
               </div>
+              <div className="flex flex-col mt-10 md:flex-row md:space-x-6 space-y-6 md:space-y-0 items-center justify-center">
+                <BlogPreview
+                  title="Monitoring your distributed microservices with Observability Tools"
+                  subtitle="How you can monitor and keep checks on your FastAPI microservices with Logfire before they burn down."
+                  imageUrl="/blog3/centralise-monitoring.png"
+                  description="When your system has more than a few microservices, how do you keep track of them all? How do you find out what went wrong when something breaks? What about precautionary measures to prevent failures? Do you visit each service's terminal logs individually? That would be a nightmare."
+                  slug="monitoring-your-distributed-microservices"
+                  author="Marzukh Akib Asjad"
+                  createdDate="09/12/2025"
+                  featured={false}
+                />
+              </div>
             </div>
           </div>
         </article>
