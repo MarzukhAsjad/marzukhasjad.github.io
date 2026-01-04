@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import blog1 from "./posts/blog1";
 import blog2 from "./posts/blog2";
+import blog3 from "./posts/blog3";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,10 @@ function App() {
         <Route
           path="/blog/b2c-success-hinges-on-customer-convenience"
           element={blog2()}
+        />
+        <Route
+          path="/blog/monitoring-your-distributed-microservices"
+          element={blog3()}
         />
       </Routes>
     </div>
