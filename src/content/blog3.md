@@ -6,6 +6,8 @@
 
 When your system has more than a few microservices, how do you keep track of them all? How do you find out what went wrong when something breaks? What about precautionary measures to prevent failures? Do you visit each service's terminal logs individually? That would be a nightmare.
 
+![No centralised logging means ssh-ing into each service separately{width: w-100}](/blog3/crazy-typing.gif)
+
 This is where observability tools come in. I covered in one of my previous [articles](#/blog/secure-modularised-microservices-with-webhooks-communication) how we can communicate between microservices using webhooks and how monitoring is essential. In this article, I'll show you how to set up Logfire, an observability tool, to monitor your FastAPI microservices. This is not a sponsored post; I genuinely find Logfire useful and want to share it with you.
 
 ### What is Pydantic Logfire?

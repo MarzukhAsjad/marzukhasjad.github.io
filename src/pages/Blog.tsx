@@ -41,7 +41,7 @@ const Blog = () => {
             {/* More Blog Posts Coming Soon */}
             <div className="text-center">
               <h3 className="text-2xl font-mono font-semibold text-white mb-6 mt-12">
-                Check out my other post!
+                Check out my other posts!
               </h3>
               <div className="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 items-center justify-center">
                 <BlogPreview
@@ -63,7 +63,7 @@ const Blog = () => {
                   description="When your system has more than a few microservices, how do you keep track of them all? How do you find out what went wrong when something breaks? What about precautionary measures to prevent failures? Do you visit each service's terminal logs individually? That would be a nightmare."
                   slug="monitoring-your-distributed-microservices"
                   author="Marzukh Akib Asjad"
-                  createdDate="09/12/2025"
+                  createdDate="04/01/2026"
                   featured={false}
                 />
               </div>
