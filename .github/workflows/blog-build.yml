@@ -1,18 +1,9 @@
 name: Blog Build
 
 on:
-  push:
-    paths:
-      - ".github/workflows/**"
-      - "public/**"
-      - "scripts/**"
-      - "src/**"
-      - "package.json"
-      - "package-lock.json"
-      - "tsconfig*.json"
-      - "vite.config.ts"
-      - "eslint.config.js"
   pull_request:
+    branches:
+      - dev
     paths:
       - ".github/workflows/**"
       - "public/**"
@@ -23,7 +14,6 @@ on:
       - "tsconfig*.json"
       - "vite.config.ts"
       - "eslint.config.js"
-  workflow_dispatch:
 
 permissions:
   contents: read
