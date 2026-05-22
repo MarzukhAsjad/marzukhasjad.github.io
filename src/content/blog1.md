@@ -1,8 +1,19 @@
-## Secure modularised microservices with webhooks communication
-
-#### How to communicate using webhooks between REST API based microservices while maintaining simplicity, security and modularity.
-
-![Webhooks communication between microservices](/blog1/webhook_post_image.png)
+---
+title: Secure modularised microservices with webhooks communication
+subtitle: How to communicate using webhooks between REST API based microservices while maintaining simplicity, security and modularity.
+date: 2025-10-09
+author: Marzukh Akib Asjad
+slug: secure-modularised-microservices-with-webhooks-communication
+description: Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices?
+coverImage: /blog1/webhook_post_image.png
+featured: true
+draft: false
+sortOrder: 1
+tags:
+  - microservices
+  - webhooks
+  - distributed-systems
+---
 
 ### Motive
 

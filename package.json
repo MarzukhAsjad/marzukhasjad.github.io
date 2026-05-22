@@ -5,8 +5,9 @@
   "type": "module",
   "homepage": "https://marzukhasjad.github.io",
   "scripts": {
+    "blog:generate": "node ./scripts/generate-blog-content.mjs",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run blog:generate && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

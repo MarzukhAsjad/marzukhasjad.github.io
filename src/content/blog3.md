@@ -1,8 +1,19 @@
-## Monitoring your distributed microservices with Observability Tools
-
-#### How you can monitor and keep checks on your FastAPI microservices with Logfire before they burn down
-
-![Centralise your monitoring in one place](/blog3/centralise-monitoring.png)
+---
+title: Monitoring your distributed microservices with Observability Tools
+subtitle: How you can monitor and keep checks on your FastAPI microservices with Logfire before they burn down
+date: 2026-01-04
+author: Marzukh Akib Asjad
+slug: monitoring-your-distributed-microservices
+description: When your system has more than a few microservices, how do you keep track of them all? How do you find out what went wrong when something breaks? What about precautionary measures to prevent failures?
+coverImage: /blog3/centralise-monitoring.png
+featured: false
+draft: false
+sortOrder: 3
+tags:
+  - observability
+  - fastapi
+  - microservices
+---
 
 When your system has more than a few microservices, how do you keep track of them all? How do you find out what went wrong when something breaks? What about precautionary measures to prevent failures? Do you visit each service's terminal logs individually? That would be a nightmare.
 

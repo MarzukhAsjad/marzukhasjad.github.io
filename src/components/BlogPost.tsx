@@ -2,18 +2,58 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TypingAnimation } from "@/components/magicui/terminal";
 import ReactMarkdown from "react-markdown";
+import type { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 import QuizComponent from "@/components/QuizComponent";
+import { formatBlogDate, stripFrontmatter } from "@/lib/blog";
 
 interface BlogProps {
+  title: string;
+  subtitle: string;
   content: string;
   author: string;
   date: string;
+  coverImage: string;
+  tags: string[];
 }
 
-const BlogPost: React.FC<BlogProps> = ({ content, author, date }) => {
+const BlogPost: React.FC<BlogProps> = ({
+  title,
+  subtitle,
+  content,
+  author,
+  date,
+  coverImage,
+  tags,
+}) => {
+  const codeComponent: Components["code"] = ({
+    className,
+    children,
+    ...props
+  }) => {
+    const match = /language-(\w+)/.exec(className || "");
+    const inline = !match;
+
+    return !inline ? (
+      <div className="mb-4 text-left">
+        <pre className="bg-gray-900 text-green-400 p-2 sm:p-4 rounded-lg overflow-x-auto text-left">
+          <code className={`${className} text-xs sm:text-sm`} {...props}>
+            {children}
+          </code>
+        </pre>
+      </div>
+    ) : (
+      <code
+        className="bg-gray-700 text-green-300 px-1 py-0.5 rounded text-xs sm:text-sm"
+        {...props}
+      >
+        {children}
+      </code>
+    );
+  };
+
   // Function to process markdown content and extract quizzes
   const processContent = (content: string) => {
     const parts: React.ReactElement[] = [];
@@ -62,29 +102,7 @@ const BlogPost: React.FC<BlogProps> = ({ content, author, date }) => {
               strong: ({ children }) => (
                 <strong className="font-bold text-white">{children}</strong>
               ),
-              code: ({ node, className, children, ...props }: any) => {
-                const match = /language-(\w+)/.exec(className || "");
-                const inline = !match;
-                return !inline ? (
-                  <div className="mb-4 text-left">
-                    <pre className="bg-gray-900 text-green-400 p-2 sm:p-4 rounded-lg overflow-x-auto text-left">
-                      <code
-                        className={`${className} text-xs sm:text-sm`}
-                        {...props}
-                      >
-                        {children}
-                      </code>
-                    </pre>
-                  </div>
-                ) : (
-                  <code
-                    className="bg-gray-700 text-green-300 px-1 py-0.5 rounded text-xs sm:text-sm"
-                    {...props}
-                  >
-                    {children}
-                  </code>
-                );
-              },
+              code: codeComponent,
               ul: ({ children }) => (
                 <ul className="list-disc list-inside text-gray-200 mb-4 text-left">
                   {children}
@@ -174,25 +192,44 @@ const BlogPost: React.FC<BlogProps> = ({ content, author, date }) => {
             ← Back to Blog
           </Link>
           <h1 className="text-4xl font-bold mb-2 text-pink-300 font-serif">
-            Blog
+            {title}
           </h1>
           <TypingAnimation
             duration={50}
             className="mt-4 text-sm sm:text-lg font-mono"
             as={"header"}
           >
-            {"Dumping thoughts, tutorials, and insights..."}
+            {subtitle}
           </TypingAnimation>
         </header>
 
         <div className="space-y-8">
           <article className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            {processContent(content)}
+            <img
+              src={coverImage}
+              alt={title}
+              className="w-full rounded-2xl mb-6 max-h-[28rem] object-cover"
+            />
+            {processContent(stripFrontmatter(content))}
 
-            <div className="flex items-center text-sm text-gray-500 mt-6">
-              <span>{author}</span>
-              <span className="mx-2">•</span>
-              <span>{date}</span>
+            <div className="flex flex-col gap-3 text-sm text-gray-500 mt-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center">
+                <span>{author}</span>
+                <span className="mx-2">•</span>
+                <span>{formatBlogDate(date)}</span>
+              </div>
+              {tags.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-gray-600 px-3 py-1 text-xs uppercase tracking-wide text-gray-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </article>
         </div>
