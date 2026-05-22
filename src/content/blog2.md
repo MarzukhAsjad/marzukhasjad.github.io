@@ -1,8 +1,19 @@
-## B2C success is about customer convenience
-
-#### B2C success hinges on customer convenience: seamless WhatsApp AI chat, quick on-boarding, and precise guidance driving rapid 3k+ user growth in 3 months.
-
-![Just how much does convenience play a role in B2C success?](/blog2/convenience_affects_b2c.png)
+---
+title: B2C success is about customer convenience
+subtitle: B2C success hinges on customer convenience: seamless WhatsApp AI chat, quick on-boarding, and precise guidance driving rapid 3k+ user growth in 3 months.
+date: 2025-07-15
+author: Marzukh Akib Asjad
+slug: b2c-success-hinges-on-customer-convenience
+description: As the co-founder of an ed-tech startup, I’ve seen firsthand how focusing on customers’ convenience drives success in the B2C space. It really surprised me that nowadays, no one wants to go through 10 other steps to finally be onboarded onto the app.
+coverImage: /blog2/convenience_affects_b2c.png
+featured: false
+draft: false
+sortOrder: 2
+tags:
+  - b2c
+  - product
+  - growth
+---
 
 As the co-founder of an ed-tech startup, I’ve seen firsthand how focusing on customers’ convenience drives success in the B2C (Business to Consumers) space. It really surprised me that nowadays, no one wants to go to a website, click a link, download an app, create their profile on the app, sign up through an external auth provider, be rerouted back to the website to pay, do 10 other steps to be finally onboarded onto the app. So sadly, we had to settle for something simpler and more convenient.
 
