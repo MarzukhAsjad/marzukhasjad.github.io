@@ -1,56 +1,46 @@
-# React + TypeScript + Vite
+# Marzukh Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This portfolio is built with React, TypeScript, and Vite, and now includes a markdown-driven blog publishing pipeline.
 
-Currently, two official plugins are available:
+## Blog publishing flow
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Each blog post now lives in a single markdown file under `src\content`. Frontmatter is the source of truth for blog metadata, previews, and routing.
 
-## Expanding the ESLint configuration
+### Required frontmatter
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+```md
+---
+title: Replace with your post title
+subtitle: Replace with the short subtitle shown on the blog card and post page
+date: 2026-01-01
+author: Marzukh Akib Asjad
+slug: replace-with-a-url-safe-slug
+description: Replace with the short excerpt shown on the blog card
+coverImage: /blog-folder/cover-image.png
+featured: false
+draft: false
+sortOrder: 999
+tags:
+  - replace-tag
+---
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Use `src\content\_template.md` as the starting point for new posts.
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+### Publishing a new post
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+1. Create a new markdown file in `src\content`.
+2. Fill in the required frontmatter.
+3. Add any referenced images under `public\...`.
+4. Push the branch to GitHub.
 
-Run using `npm run dev`
+To unpublish a post, delete its markdown file from `src\content` and remove any no-longer-needed assets from `public\...`. The next generated manifest and deployment will remove the blog post route and preview automatically.
+
+The build runs `npm run blog:generate`, which scans the current contents of `src\content`, validates the markdown contract, regenerates `src\generated\blog-content.ts`, and then builds the site. New markdown files are added automatically, and deleted markdown files are removed automatically from the generated manifest. The GitHub Actions workflow deploys the updated site to GitHub Pages on pushes to `main` or `master`.
+
+### Local commands
+
+- `npm run dev` - start the Vite dev server
+- `npm run blog:generate` - regenerate blog metadata from markdown
+- `npm run build` - regenerate blog metadata and build the production site
+- `npm run lint` - run ESLint
