@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 import { TypingAnimation } from "@/components/magicui/terminal";
 import BlogPreview from "@/components/BlogPreview";
+import { publishedBlogPosts } from "@/generated/blog-content";
+import { formatBlogDate } from "@/lib/blog";
 
 const Blog = () => {
+  const featuredPost =
+    publishedBlogPosts.find((post) => post.featured) ?? publishedBlogPosts[0];
+  const secondaryPosts = publishedBlogPosts.filter(
+    (post) => post.slug !== featuredPost?.slug,
+  );
+
   return (
     <div className="min-h-screen bg-purple-950 text-white">
       <div className="max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8">
@@ -26,48 +34,41 @@ const Blog = () => {
         </header>
         <article className="bg-gray-800 rounded-lg p-6 border border-gray-700 flex justify-center">
           <div className="space-y-8 w-175 mt-4">
-            {/* Featured Blog Post */}
-            <BlogPreview
-              title="Secure modularised microservices with webhooks communication"
-              subtitle="How to communicate using webhooks between REST API based microservices while maintaining simplicity, security and modularity."
-              imageUrl="/blog1/webhook_post_image.png"
-              description="Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices? For instance, a friend of mine works with a personal credit lender firm and they have at least 9 microservices, one of which is literally adding 2 and 3 but on a slightly larger scale."
-              slug="secure-modularised-microservices-with-webhooks-communication"
-              author="Marzukh Akib Asjad"
-              createdDate="09/10/2025"
-              featured={true}
-            />
+            {featuredPost ? (
+              <BlogPreview
+                title={featuredPost.title}
+                subtitle={featuredPost.subtitle}
+                imageUrl={featuredPost.coverImage}
+                description={featuredPost.description}
+                slug={featuredPost.slug}
+                author={featuredPost.author}
+                createdDate={formatBlogDate(featuredPost.date)}
+                featured={featuredPost.featured}
+              />
+            ) : null}
 
-            {/* More Blog Posts Coming Soon */}
-            <div className="text-center">
-              <h3 className="text-2xl font-mono font-semibold text-white mb-6 mt-12">
-                Check out my other posts!
-              </h3>
-              <div className="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 items-center justify-center">
-                <BlogPreview
-                  title="B2C success is about customer convenience"
-                  subtitle="B2C success hinges on customer convenience: seamless WhatsApp AI chat, quick on-boarding, and precise guidance driving rapid 3k+ user growth in 3 months."
-                  imageUrl="/blog2/convenience_affects_b2c.png"
-                  description="As the co-founder of an ed-tech startup, I’ve seen firsthand how focusing on customers’ convenience drives success in the B2C (Business to Consumers) space. It really surprised me that nowadays, no one wants to go to a website, click a link, download an app, create their profile on the app, sign up through an external auth provider, be rerouted back to the website to pay, do 10 other steps to be finally onboarded onto the app."
-                  slug="b2c-success-hinges-on-customer-convenience"
-                  author="Marzukh Akib Asjad"
-                  createdDate="15/07/2025"
-                  featured={false}
-                />
+            {secondaryPosts.length > 0 ? (
+              <div className="text-center">
+                <h3 className="text-2xl font-mono font-semibold text-white mb-6 mt-12">
+                  Check out my other posts!
+                </h3>
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
+                  {secondaryPosts.map((post) => (
+                    <BlogPreview
+                      key={post.slug}
+                      title={post.title}
+                      subtitle={post.subtitle}
+                      imageUrl={post.coverImage}
+                      description={post.description}
+                      slug={post.slug}
+                      author={post.author}
+                      createdDate={formatBlogDate(post.date)}
+                      featured={post.featured}
+                    />
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col mt-10 md:flex-row md:space-x-6 space-y-6 md:space-y-0 items-center justify-center">
-                <BlogPreview
-                  title="Monitoring your distributed microservices with Observability Tools"
-                  subtitle="How you can monitor and keep checks on your FastAPI microservices with Logfire before they burn down."
-                  imageUrl="/blog3/centralise-monitoring.png"
-                  description="When your system has more than a few microservices, how do you keep track of them all? How do you find out what went wrong when something breaks? What about precautionary measures to prevent failures? Do you visit each service's terminal logs individually? That would be a nightmare."
-                  slug="monitoring-your-distributed-microservices"
-                  author="Marzukh Akib Asjad"
-                  createdDate="04/01/2026"
-                  featured={false}
-                />
-              </div>
-            </div>
+            ) : null}
           </div>
         </article>
       </div>
