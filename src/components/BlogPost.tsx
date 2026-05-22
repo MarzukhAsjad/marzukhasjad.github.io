@@ -205,11 +205,13 @@ const BlogPost: React.FC<BlogProps> = ({
 
         <div className="space-y-8">
           <article className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <img
-              src={coverImage}
-              alt={title}
-              className="w-full rounded-2xl mb-6 max-h-[28rem] object-cover"
-            />
+            <div className="flex justify-center mb-6">
+              <img
+                src={coverImage}
+                alt={title}
+                className="rounded-2xl w-150 max-w-full h-auto"
+              />
+            </div>
             {processContent(stripFrontmatter(content))}
 
             <div className="flex flex-col gap-3 text-sm text-gray-500 mt-6 sm:flex-row sm:items-center sm:justify-between">
