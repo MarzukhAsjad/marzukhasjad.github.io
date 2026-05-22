@@ -36,7 +36,13 @@ Use `src\content\_template.md` as the starting point for new posts.
 
 To unpublish a post, delete its markdown file from `src\content` and remove any no-longer-needed assets from `public\...`. The next generated manifest and deployment will remove the blog post route and preview automatically.
 
-The build runs `npm run blog:generate`, which scans the current contents of `src\content`, validates the markdown contract, regenerates `src\generated\blog-content.ts`, and then builds the site. New markdown files are added automatically, and deleted markdown files are removed automatically from the generated manifest. The GitHub Actions workflow deploys the updated site to GitHub Pages on pushes to `main` or `master`.
+The build runs `npm run blog:generate`, which scans the current contents of `src\content`, validates the markdown contract, regenerates `src\generated\blog-content.ts`, and then builds the site. New markdown files are added automatically, and deleted markdown files are removed automatically from the generated manifest.
+
+## GitHub Actions flow
+
+- `.github\workflows\blog-build.yml` runs on every push and pull request that changes the site or blog pipeline.
+- `.github\workflows\blog-deploy.yml` runs only on pushes to `dev`, so deployment happens after code is merged to `dev`, not before.
+- To make the build pipeline block merges, add **Blog Build** as a required status check in the repository branch protection rules for the target branch.
 
 ### Local commands
 
