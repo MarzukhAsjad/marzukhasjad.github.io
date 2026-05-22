@@ -1,0 +1,46 @@
+name: Blog Build
+
+on:
+  pull_request:
+    branches:
+      - dev
+    paths:
+      - ".github/workflows/**"
+      - "public/**"
+      - "scripts/**"
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig*.json"
+      - "vite.config.ts"
+      - "eslint.config.js"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blog-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint project
+        run: npm run lint
+
+      - name: Build site
+        run: npm run build
