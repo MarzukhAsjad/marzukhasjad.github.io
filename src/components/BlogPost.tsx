@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TypingAnimation } from "@/components/magicui/terminal";
 import ReactMarkdown from "react-markdown";
+import type { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
@@ -27,6 +28,32 @@ const BlogPost: React.FC<BlogProps> = ({
   coverImage,
   tags,
 }) => {
+  const codeComponent: Components["code"] = ({
+    className,
+    children,
+    ...props
+  }) => {
+    const match = /language-(\w+)/.exec(className || "");
+    const inline = !match;
+
+    return !inline ? (
+      <div className="mb-4 text-left">
+        <pre className="bg-gray-900 text-green-400 p-2 sm:p-4 rounded-lg overflow-x-auto text-left">
+          <code className={`${className} text-xs sm:text-sm`} {...props}>
+            {children}
+          </code>
+        </pre>
+      </div>
+    ) : (
+      <code
+        className="bg-gray-700 text-green-300 px-1 py-0.5 rounded text-xs sm:text-sm"
+        {...props}
+      >
+        {children}
+      </code>
+    );
+  };
+
   // Function to process markdown content and extract quizzes
   const processContent = (content: string) => {
     const parts: React.ReactElement[] = [];
@@ -75,29 +102,7 @@ const BlogPost: React.FC<BlogProps> = ({
               strong: ({ children }) => (
                 <strong className="font-bold text-white">{children}</strong>
               ),
-              code: ({ node, className, children, ...props }: any) => {
-                const match = /language-(\w+)/.exec(className || "");
-                const inline = !match;
-                return !inline ? (
-                  <div className="mb-4 text-left">
-                    <pre className="bg-gray-900 text-green-400 p-2 sm:p-4 rounded-lg overflow-x-auto text-left">
-                      <code
-                        className={`${className} text-xs sm:text-sm`}
-                        {...props}
-                      >
-                        {children}
-                      </code>
-                    </pre>
-                  </div>
-                ) : (
-                  <code
-                    className="bg-gray-700 text-green-300 px-1 py-0.5 rounded text-xs sm:text-sm"
-                    {...props}
-                  >
-                    {children}
-                  </code>
-                );
-              },
+              code: codeComponent,
               ul: ({ children }) => (
                 <ul className="list-disc list-inside text-gray-200 mb-4 text-left">
                   {children}
