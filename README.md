@@ -42,7 +42,8 @@ The build runs `npm run blog:generate`, which scans the current contents of `src
 
 - `.github\workflows\blog-build.yml` runs only on pull requests targeting `dev`.
 - `.github\workflows\blog-deploy.yml` runs only on pushes to `dev`, so deployment happens after code is merged to `dev`, not before.
-- To prevent merges before CI finishes, add **Blog Build** as a required status check in the branch protection rule for `dev`. GitHub enforces the merge block there, not from inside the workflow file itself.
+- To prevent merges before CI finishes, add **blog-build** as a required status check in the branch protection rule for `dev`. GitHub enforces the merge block there, not from inside the workflow file itself.
+- If you want the merge button blocked immediately on every PR, keep this workflow unfiltered so the required check is always created for every PR targeting `dev`.
 
 ### Local commands
 

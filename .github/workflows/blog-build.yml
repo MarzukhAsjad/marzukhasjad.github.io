@@ -4,16 +4,6 @@ on:
   pull_request:
     branches:
       - dev
-    paths:
-      - ".github/workflows/**"
-      - "public/**"
-      - "scripts/**"
-      - "src/**"
-      - "package.json"
-      - "package-lock.json"
-      - "tsconfig*.json"
-      - "vite.config.ts"
-      - "eslint.config.js"
 
 permissions:
   contents: read
@@ -23,7 +13,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  blog-build:
+    name: blog-build
     runs-on: ubuntu-latest
 
     steps:
