@@ -1,10 +1,10 @@
 ---
 title: Jobless, procrastinating, but not lost
-subtitle: Little things you can do that force you to learn new things even when you have no motivation to do so.
+subtitle: Beat the algorithm and use your jobless time to learn new things, even when you have no motivation to do so.
 date: 2026-05-23
 author: Marzukh Akib Asjad
 slug: jobless-but-not-lost
-description: Beat the algorithm and use your jobless time to learn new things, even when you have no motivation to do so.
+description: Being jobless gives you a new perspective on life. Suddenly you have a lot of time on your hands and you do not know what to do with it. You go to LinkedIn to apply for a job, but you see 1 of 3 things when you go on to that atrocious platform
 coverImage: /blog4/todd-rhines-W0jzK552m8E-unsplash.jpg
 featured: false
 draft: false
@@ -26,7 +26,7 @@ Being jobless gives you a new perspective on life. Suddenly you have a lot of ti
 
 ![bro's a serial killer at this point{width: w-100}](/blog4/doomspeak.jpg)
 
-All this doom kills your motivation (don't let Claude know this) and you then take a break to hop on to instagram. In your head you are thinking "I know I should learn something new, but I just have no motivation to do so or the strength to do so, however DOOMSCROLLING is definitely easier and more fun". Suddenly, you have doomscrolled for hours, and you feel like crap for being so unproductive, and you are back to square one. You are jobless, procrastinating, and lost. That's like the 3 worst things you can be at once. You could blame the system and the algorithm for pushing you into this abyss, or, you can tell the algorithm to assist you instead.
+All this doom kills your motivation (don't tell Claude) and you then take a break to hop on to instagram. In your head you are thinking "I know I should learn something new, but I just have no motivation to do so or the strength to do so, however DOOMSCROLLING is definitely easier and more fun". Suddenly, you have doomscrolled for hours, and you feel like crap for being so unproductive, and you are back to square one. You are jobless, procrastinating, and lost. That's like the 3 worst things you can be at once. You could blame the system and the algorithm for pushing you into this abyss, or, you can tell the algorithm to assist you instead.
 
 ### Little changes, big effects
 

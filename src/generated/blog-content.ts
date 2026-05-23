@@ -67,11 +67,11 @@ export const blogPosts: BlogPostRecord[] = [
   },
   {
     title: "Jobless, procrastinating, but not lost",
-    subtitle: "Little things you can do that force you to learn new things even when you have no motivation to do so.",
+    subtitle: "Beat the algorithm and use your jobless time to learn new things, even when you have no motivation to do so.",
     date: "2026-05-23",
     author: "Marzukh Akib Asjad",
     slug: "jobless-but-not-lost",
-    description: "Beat the algorithm and use your jobless time to learn new things, even when you have no motivation to do so.",
+    description: "Being jobless gives you a new perspective on life. Suddenly you have a lot of time on your hands and you do not know what to do with it. You go to LinkedIn to apply for a job, but you see 1 of 3 things when you go on to that atrocious platform",
     coverImage: "/blog4/todd-rhines-W0jzK552m8E-unsplash.jpg",
     featured: false,
     draft: false,
