@@ -89,6 +89,20 @@ const BlogPost: React.FC<BlogProps> = ({
                   {children}
                 </p>
               ),
+              a: ({ href, children }) => {
+                const isExternal = href?.startsWith("http");
+
+                return (
+                  <a
+                    href={href}
+                    className="text-yellow-300 underline underline-offset-4 decoration-yellow-400 hover:text-yellow-200 transition-colors"
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                  >
+                    {children}
+                  </a>
+                );
+              },
               h4: ({ children }) => (
                 <h4 className="text-lg font-medium mb-4 text-gray-400 text-center italic">
                   {children}
@@ -166,7 +180,7 @@ const BlogPost: React.FC<BlogProps> = ({
             }}
           >
             {section}
-          </ReactMarkdown>
+          </ReactMarkdown>,
         );
       }
 

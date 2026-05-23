@@ -14,11 +14,11 @@ tags:
   - learning
 ---
 
-_Photo by <a href="https://unsplash.com/@rhinestodd?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Todd Rhines</a> on <a href="https://unsplash.com/photos/person-in-black-long-sleeve-shirt-showing-left-hand-W0jzK552m8E?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>_
+_Photo by [Todd Rhines](https://unsplash.com/@rhinestodd?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/person-in-black-long-sleeve-shirt-showing-left-hand-W0jzK552m8E?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
 
 This post is a bit more personal than the others, but I think it is important to share. I have been jobless for a few months and it has been a rollercoaster of emotions.
 
-![Jobless, but not unemployed](/blog4/jobless-not-unemployed.jpg)
+![Jobless, but not unemployed{width: w-100}](/blog4/jobless-not-unemployed.jpg)
 
 But like all the other blog posts, I will literally try my best to make this not sappy. The goal of this blog post is not to overcome the depression part, because that requires actual qualifications (cue therapist sponsorship), but rather focus on the limbo stasis where one has ample time to better themselves or pick up on new skills. Who am I to give you this advice? A random person on the internet who writes blogs that you should totally listen to.
 
