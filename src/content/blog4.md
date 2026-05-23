@@ -47,7 +47,7 @@ The thing is, this is not all things done in a day. You can choose to spend more
 
 This is me, beginning my series of learning new things every day. This blog is a soft launch of that, and I will be sharing my learnings and progress in future blog posts. I hope you will join me on this journey of self-improvement and learning new skills.
 
-![Pain is inevitable, but suffering is optional](/blog4/pain-drives-us-to-strive.jpg)
+![Yooo this line is COLD. I wonder if I came up with this or I read it elsewhere.](/blog4/pain-drives-us-to-strive.jpg)
 
 You will feel pain, but what you choose to do next is up to you. Do you want to use that pain to drive you to strive for better things, or do you want to let it consume you? The choice is yours. _But seriously, if you are feeling down, please reach out to someone. You are not alone._
 
