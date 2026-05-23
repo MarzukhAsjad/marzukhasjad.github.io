@@ -27,8 +27,9 @@ But like all the other blog posts, I will literally try my best to make this not
 So while you are jobless, you have a lot of time on your hands. You can use this time to learn new skills or improve existing ones. But how do you know how much time to spend on each skill? I have a simple formula for that:
 
 ```
-Hours gained = 24 - sleep hours - hours spent on self-care - hours spent on job applications - hours spent on networking - hours spent on hobbies (holy... this is depressing to write)
+Hours gained = 24 - sleep hours - hours spent on self-care - hours spent on job applications - hours spent on socialising/networking - hours spent on hobbies
 ```
+_(I got no hobbies, so I removed that part for me when I calculated it for myself 😭😭)_
 
 The thing is, this is not all things done in a day. You can choose to spend more time on one skill and less on another. The key is to find a balance that works for you. If you had a job, chances are you would be in that numbless place, doing the same thing every day, and definitely not learning new skills. Learning new skills is actually so fun. Pretty sure you vibe-coded that new database migration for your vibe-coded backend, but hey, have you actually ever thought how a database works? Or how your favourite game engine works? Or how Claude Code works? Imagine how much fun it would be to learn about that. You can use your jobless time to learn about these things and more.
 
