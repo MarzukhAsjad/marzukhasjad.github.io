@@ -37,8 +37,8 @@ flowchart TD
   class C subtract;
   class H result;
 
-  linkStyle 0 stroke:#64748b,stroke-width:2px,stroke-dasharray:8 5;
-  linkStyle 1 stroke:#10b981,stroke-width:3px,stroke-dasharray:8 5;
+  linkStyle 0 stroke:#64748b,stroke-width:2px,stroke-dasharray:8 5,animation:fast;
+  linkStyle 1 stroke:#10b981,stroke-width:3px,stroke-dasharray:8 5,animation:fast;
 ```
 
 _(I got no hobbies, so I removed that part for me when I calculated it for myself 😭😭)_

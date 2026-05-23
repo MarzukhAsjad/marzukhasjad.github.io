@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useId, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { TypingAnimation } from "@/components/magicui/terminal";
 import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import mermaid from "mermaid";
 import "highlight.js/styles/github-dark.css";
 import QuizComponent from "@/components/QuizComponent";
 import { formatBlogDate, stripFrontmatter } from "@/lib/blog";
@@ -18,6 +19,99 @@ interface BlogProps {
   coverImage: string;
   tags: string[];
 }
+
+let mermaidIsInitialized = false;
+
+const MermaidBlock: React.FC<{ chart: string }> = ({ chart }) => {
+  const rawId = useId();
+  const [view, setView] = useState<"diagram" | "code">("diagram");
+  const [svg, setSvg] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+  const chartId = useMemo(
+    () => `mermaid-${rawId.replace(/[^a-zA-Z0-9_-]/g, "")}`,
+    [rawId],
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const render = async () => {
+      if (!mermaidIsInitialized) {
+        mermaid.initialize({
+          startOnLoad: false,
+          securityLevel: "loose",
+          theme: "dark",
+          flowchart: {
+            htmlLabels: true,
+          },
+        });
+        mermaidIsInitialized = true;
+      }
+
+      try {
+        const { svg: renderedSvg } = await mermaid.render(chartId, chart);
+        if (!cancelled) {
+          setSvg(renderedSvg);
+          setError(null);
+        }
+      } catch {
+        if (!cancelled) {
+          setError("Unable to render Mermaid diagram. Please check syntax.");
+        }
+      }
+    };
+
+    void render();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [chart, chartId]);
+
+  return (
+    <div className="mb-6 rounded-lg border border-cyan-800/50 bg-slate-900/70 p-3 sm:p-4">
+      <div className="mb-3 flex gap-2">
+        <button
+          type="button"
+          className={`rounded-md px-3 py-1 text-xs font-mono transition-colors ${
+            view === "diagram"
+              ? "bg-cyan-500 text-slate-950"
+              : "bg-slate-800 text-slate-200 hover:bg-slate-700"
+          }`}
+          onClick={() => setView("diagram")}
+        >
+          Diagram
+        </button>
+        <button
+          type="button"
+          className={`rounded-md px-3 py-1 text-xs font-mono transition-colors ${
+            view === "code"
+              ? "bg-cyan-500 text-slate-950"
+              : "bg-slate-800 text-slate-200 hover:bg-slate-700"
+          }`}
+          onClick={() => setView("code")}
+        >
+          Code
+        </button>
+      </div>
+
+      {view === "diagram" ? (
+        error ? (
+          <p className="text-sm text-red-300">{error}</p>
+        ) : (
+          <div
+            className="overflow-x-auto rounded-md bg-slate-950 p-3 [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-w-full"
+            dangerouslySetInnerHTML={{ __html: svg }}
+          />
+        )
+      ) : (
+        <pre className="overflow-x-auto rounded-md bg-slate-950 p-3 text-xs text-cyan-200 sm:text-sm">
+          <code>{chart}</code>
+        </pre>
+      )}
+    </div>
+  );
+};
 
 const BlogPost: React.FC<BlogProps> = ({
   title,
@@ -35,6 +129,10 @@ const BlogPost: React.FC<BlogProps> = ({
   }) => {
     const match = /language-(\w+)/.exec(className || "");
     const inline = !match;
+
+    if (!inline && match?.[1] === "mermaid") {
+      return <MermaidBlock chart={String(children).replace(/\n$/, "")} />;
+    }
 
     return !inline ? (
       <div className="mb-4 text-left">
@@ -187,7 +285,7 @@ const BlogPost: React.FC<BlogProps> = ({
       // Add quiz component if there's a quiz match
       if (quizMatches && quizMatches[index]) {
         parts.push(
-          <QuizComponent key={`quiz-${index}`} content={quizMatches[index]} />
+          <QuizComponent key={`quiz-${index}`} content={quizMatches[index]} />,
         );
       }
     });
