@@ -38,7 +38,7 @@ Additionally, I'd also recommend following some newsletters and online communiti
 
 The best part about being jobless is that you have so much time to learn new things. Job stability is a thing of the past in the tech industry, and if you're an entry/junior/mid-level, then I hate to break it to you, but the dream of the stable job has long gone ever since ChatGPT got released. 
 
-![Amazon/Google/Meta, the biggest "stablest" tech companies do mass layoff](/blog4/layoff-can-happen-anytime.jpg)
+![Amazon/Google/Meta, the biggest "stablest" tech companies do mass layoff, let that sink in{width: w-100}](/blog4/layoff-can-happen-anytime.jpg)
 
 Learning is the only thing that you can keep doing, before/after/during the job.
 
