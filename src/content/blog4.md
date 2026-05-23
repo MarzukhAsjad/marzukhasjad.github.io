@@ -26,19 +26,21 @@ But like all the other blog posts, I will literally try my best to make this not
 
 ```mermaid
 flowchart TD
-  B[24 total hours] -. subtract .-> C[sleep<br/>self-care<br/>job applications<br/>socialising/networking<br/>hobbies]
-  C -. equals .-> H[Hours left for learning]
+  B[24 total hours] e1@-. subtract .-> C[sleep<br/>self-care<br/>job applications<br/>socialising/networking<br/>hobbies]
+  C e2@-. equals .-> H[Hours left for learning]
 
   classDef start fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e,stroke-width:2px,font-weight:bold;
   classDef subtract fill:#fff7ed,stroke:#f97316,color:#7c2d12,stroke-width:2px;
   classDef result fill:#ecfdf5,stroke:#10b981,color:#064e3b,stroke-width:3px,font-weight:bold;
+  classDef animatedEdge stroke-dasharray:8\,5,animate:true,animation:fast;
 
   class B start;
   class C subtract;
   class H result;
+  class e1,e2 animatedEdge;
 
-  linkStyle 0 stroke:#64748b,stroke-width:2px,stroke-dasharray:8 5,animation:fast;
-  linkStyle 1 stroke:#10b981,stroke-width:3px,stroke-dasharray:8 5,animation:fast;
+  linkStyle 0 stroke:#64748b,stroke-width:2px;
+  linkStyle 1 stroke:#10b981,stroke-width:3px;
 ```
 
 _(I got no hobbies, so I removed that part for me when I calculated it for myself 😭😭)_
