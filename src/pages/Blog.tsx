@@ -52,20 +52,29 @@ const Blog = () => {
                 <h3 className="text-2xl font-mono font-semibold text-white mb-6 mt-12">
                   Check out my other posts!
                 </h3>
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
-                  {secondaryPosts.map((post) => (
-                    <BlogPreview
-                      key={post.slug}
-                      title={post.title}
-                      subtitle={post.subtitle}
-                      imageUrl={post.coverImage}
-                      description={post.description}
-                      slug={post.slug}
-                      author={post.author}
-                      createdDate={formatBlogDate(post.date)}
-                      featured={post.featured}
-                    />
-                  ))}
+                <div className="columns-1 xl:columns-2 gap-8">
+                  {secondaryPosts.map((post, idx) => {
+                    const aspects: Array<"aspect-video" | "aspect-[4/3]" | "aspect-[3/2]" | "aspect-square"> = [
+                      "aspect-video",
+                      "aspect-[3/2]",
+                      "aspect-square",
+                      "aspect-[4/3]",
+                    ];
+                    return (
+                      <BlogPreview
+                        key={post.slug}
+                        title={post.title}
+                        subtitle={post.subtitle}
+                        imageUrl={post.coverImage}
+                        description={post.description}
+                        slug={post.slug}
+                        author={post.author}
+                        createdDate={formatBlogDate(post.date)}
+                        featured={post.featured}
+                        imageAspect={aspects[idx % aspects.length]}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             ) : null}

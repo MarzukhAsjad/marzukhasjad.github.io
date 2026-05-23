@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+type ImageAspect = "aspect-video" | "aspect-[4/3]" | "aspect-[3/2]" | "aspect-square";
+
 interface BlogPreviewProps {
   title: string;
   subtitle: string;
@@ -10,6 +12,7 @@ interface BlogPreviewProps {
   createdDate: string;
   slug: string;
   featured?: boolean;
+  imageAspect?: ImageAspect;
 }
 
 const BlogPreview: React.FC<BlogPreviewProps> = ({
@@ -21,11 +24,12 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
   createdDate,
   slug,
   featured = false,
+  imageAspect = "aspect-video",
 }) => {
   return (
     <Link
       to={`/blog/${slug}`}
-      className="block group transition-transform duration-300 hover:scale-105"
+      className="block group transition-transform duration-300 hover:scale-105 break-inside-avoid mb-8"
     >
       <article
         className={`bg-gray-800 rounded-lg border border-gray-700 overflow-hidden hover:border-gray-600 transition-colors ${
@@ -38,7 +42,7 @@ const BlogPreview: React.FC<BlogPreviewProps> = ({
           </div>
         )}
 
-        <div className="aspect-video overflow-hidden">
+        <div className={`${imageAspect} overflow-hidden`}>
           <img
             src={imageUrl}
             alt={title}

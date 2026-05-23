@@ -271,7 +271,7 @@ const BlogPost: React.FC<BlogProps> = ({
                 );
               },
               blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-yellow-500 bg-yellow-900/20 pl-4 pr-4 py-3 rounded-r-lg italic text-yellow-200 mb-4 font-mono text-center [&>p]:mb-0 [&>p]:text-center [&>p]:font-mono [&>p]:italic">
+                <blockquote className="relative italic text-yellow-100/90 mb-6 text-center leading-relaxed rounded-xl border border-yellow-500/30 bg-yellow-500/5 px-8 py-5 before:absolute before:left-4 before:top-2 before:content-['\201C'] before:text-4xl before:text-yellow-500/40 before:font-serif before:leading-none [&>p]:mb-0 [&>p]:text-center [&>p]:italic">
                   {children}
                 </blockquote>
               ),
