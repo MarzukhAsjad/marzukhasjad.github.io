@@ -22,7 +22,7 @@ This post is a bit more personal than the others, but I think it is important to
 
 But like all the other blog posts, I will literally try my best to make this not sappy. The goal of this blog post is not to overcome the depression part, because that requires actual qualifications (cue therapist sponsorship), but rather focus on the limbo stasis where one has ample time to better themselves or pick up on new skills. Who am I to give you this advice? A random person on the internet who writes blogs that you should totally listen to.
 
-## Calculating hours for new skills
+### Calculating hours for new skills
 
 So while you are jobless, you have a lot of time on your hands. You can use this time to learn new skills or improve existing ones. But how do you know how much time to spend on each skill? I have a simple formula for that:
 
@@ -39,7 +39,7 @@ This is me, beginning my series of learning new things every day. This blog is a
 
 You will feel pain, but what you choose to do next is up to you. Do you want to use that pain to drive you to strive for better things, or do you want to let it consume you? The choice is yours. _But seriously, if you are feeling down, please reach out to someone. You are not alone._
 
-## Conclusion
+### Conclusion
 
 There are methods on how to make this learning process easier. I have subscribed to a lot of newsletters that send me interesting articles and resources on a daily basis. Try journalclub, it is a newsletter that sends you a research paper every week. Also tune into daily.dev, where you are forced to face new technologies and trends in the tech industry. You can also join online communities and forums related to your interests. This will help you stay motivated and learn from others who are also learning new skills.
 
