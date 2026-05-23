@@ -40,8 +40,8 @@ The best part about being jobless is that you have so much time to learn new thi
 
 ```mermaid
 flowchart TD
-  B[24 total hours] -. subtract .-> C[sleep: 8h<br/>self-care: 2h<br/>job applications: 3h<br/>socialising/networking: 2h<br/>hobbies: 1h<br/><br/>total subtracted: 16h]
-  C -. equals .-> H[Hours left for learning: 8h]
+  B[24 total hours] -. subtract .-> C[sleep: 8h<br/>self-care: 2h<br/>job applications: 3h<br/>socialising/networking: 1h<br/>hobbies: 1h<br/>doomscrolling: 4h<br/><br/>total subtracted: 19h]
+  C -. equals .-> H[Hours left for learning: 5h]
 
   classDef start fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e,stroke-width:2px,font-weight:bold;
   classDef subtract fill:#fff7ed,stroke:#f97316,color:#7c2d12,stroke-width:2px;
@@ -57,8 +57,8 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  J[24 total hours] -. subtract .-> K[sleep: 8h<br/>self-care: 2h<br/>work hours: 8h<br/>commute: 1.5h<br/>house chores: 1h<br/>social/family time: 2h<br/><br/>total subtracted: 22.5h]
-  K -. equals .-> L[Hours left for learning after work: 1.5h]
+  J[24 total hours] -. subtract .-> K[sleep: 8h<br/>self-care: 2h<br/>work hours: 8h<br/>commute: 1.5h<br/>house chores: 1h<br/>social/family time: 0.5h<br/>doomscrolling: 2h<br/><br/>total subtracted: 23h]
+  K -. equals .-> L[Hours left for learning after work: 1h]
 
   classDef start fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e,stroke-width:2px,font-weight:bold;
   classDef subtract fill:#fff7ed,stroke:#f97316,color:#7c2d12,stroke-width:2px;
@@ -71,6 +71,9 @@ flowchart TD
   linkStyle 0 stroke:#64748b,stroke-width:2px,stroke-dasharray:8 5;
   linkStyle 1 stroke:#ef4444,stroke-width:3px,stroke-dasharray:8 5;
 ```
+
+The funny thing is, I did not include hobbies in the second flowchart. Anyways, the point is, being jobless gives you more hours to learn. You can use that time to learn new skills, work on projects, or even just read about new technologies and trends in the industry. I am also probably not being fully honest on the time you waste on doom-scrolling, but you get the point.
+
 Learning new skills is actually so fun. Did you just **vibe-code** that database migration for your backend? Cool, but have you actually ever thought how a database works underneath? Or how there is a specific library called mermaid that helps you create flowcharts in markdown (like the one above)? Or how your favourite game engine renders graphics? Or how Claude Code works? Imagine how much fun it would be to learn about that. You can use your jobless time to learn about these things and more.
 
 ### Conclusion
