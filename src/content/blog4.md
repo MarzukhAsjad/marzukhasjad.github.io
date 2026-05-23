@@ -80,11 +80,11 @@ flowchart TD
   linkStyle 1 stroke:#10b981,stroke-width:3px,stroke-dasharray:8 5;
 ```
 
-The funny thing is, I didn't include hobbies in the employed flowchart (but we know we rarely have time for them when we're working 9 to 5, right?). Anyways, being jobless gives you more hours to learn. Use that time to learn new skills, work on projects, or even just read about new technologies and trends in the industry. I'm also probably not being fully honest on the time you waste on doomscrolling, but you get the point.
+Funny thing is, I didn't even include hobbies in the employed flowchart, yet we still ended up with less time for learning. Anyways, being jobless gives you more hours to learn, hands down. Use that time to learn new skills, work on projects, or even just read about new technologies and trends in the industry. I'm also probably not being fully honest on the time you waste on doomscrolling, but you get the point.
 
 ### Be hungry for knowledge
 
-Learning new skills is actually so fun. Did you just **vibe-code** that database migration for your backend? Cool, but have you actually ever thought how a database works underneath? Or how there is a specific library called mermaid that helps you create flowcharts in markdown (like the one above)? Or how your favourite game engine renders graphics? Or how Claude Code works? Imagine how much fun it would be to learn about that. You can use your jobless time to learn about these things and more.
+Learning new skills is actually so fun. Did you just **vibe-code** that database migration for your backend? Cool, but have you ever thought how a database works underneath? Or how does mermaid.js help you create flowcharts in markdown (like the one I did above)? Or how your favourite game engine renders graphics? Or how Claude Code works? Imagine how fun it would be to learn about these.
 
 ### Conclusion
 
