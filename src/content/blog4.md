@@ -22,23 +22,28 @@ This post is a bit more personal than the others, but I think it is important to
 
 But like all the other blog posts, I will literally try my best to make this not sappy. The goal of this blog post is not to overcome the depression part, because that requires actual qualifications (cue therapist sponsorship), but rather focus on the limbo stasis where one has ample time to better themselves or pick up on new skills. Who am I to give you this advice? A random person on the internet who writes blogs that you should totally listen to.
 
-### Calculating hours for new skills
+### Does being jobless give you more hours to learn?
 
-So while you are jobless, you have a lot of time on your hands. You can use this time to learn new skills or improve existing ones. But how do you know how much time to spend on each skill? I have a simple formula for that:
+```mermaid
+flowchart TD
+  B[24 total hours] -. subtract .-> C[sleep<br/>self-care<br/>job applications<br/>socialising/networking<br/>hobbies]
+  C -. equals .-> H[Hours left for learning]
 
-```
-Hours gained = 
-    24 - 
-    sleep hours -
-    hours spent on self-care -
-    hours spent on job applications -
-    hours spent on socialising/networking -
-    hours spent on hobbies
+  classDef start fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e,stroke-width:2px,font-weight:bold;
+  classDef subtract fill:#fff7ed,stroke:#f97316,color:#7c2d12,stroke-width:2px;
+  classDef result fill:#ecfdf5,stroke:#10b981,color:#064e3b,stroke-width:3px,font-weight:bold;
+
+  class B start;
+  class C subtract;
+  class H result;
+
+  linkStyle 0 stroke:#64748b,stroke-width:2px,stroke-dasharray:8 5;
+  linkStyle 1 stroke:#10b981,stroke-width:3px,stroke-dasharray:8 5;
 ```
 
 _(I got no hobbies, so I removed that part for me when I calculated it for myself 😭😭)_
 
-The thing is, this is not all things done in a day. You can choose to spend more time on one skill and less on another. The key is to find a balance that works for you. If you had a job, chances are you would be in that numbless place, doing the same thing every day, and definitely not learning new skills. Learning new skills is actually so fun. Pretty sure you vibe-coded that new database migration for your vibe-coded backend, but hey, have you actually ever thought how a database works? Or how your favourite game engine works? Or how Claude Code works? Imagine how much fun it would be to learn about that. You can use your jobless time to learn about these things and more.
+The thing is, this is not all things done in a day. You can choose to spend more time on one skill and less on another. The key is to find a balance that works for you. If you had a job, chances are you would be in that numbless place, doing the same thing every day, and definitely not learning new skills. Learning new skills is actually so fun. Pretty sure you vibe-coded that new database migration for your vibe-coded backend, but hey, have you actually ever thought how a database works? Or how there is a specific library called mermaid that helps you create diagrams in markdown (like the one above)? Or how your favourite game engine works? Or how Claude Code works? Imagine how much fun it would be to learn about that. You can use your jobless time to learn about these things and more.
 
 This is me, beginning my series of learning new things every day. This blog is a soft launch of that, and I will be sharing my learnings and progress in future blog posts. I hope you will join me on this journey of self-improvement and learning new skills.
 
