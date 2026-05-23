@@ -7,7 +7,7 @@ slug: jobless-but-not-lost
 description: This post is a bit more personal than the others, but I think it is important to share. I have been jobless for a few months and it has been a rollercoaster of emotions.
 coverImage: /blog4/todd-rhines-W0jzK552m8E-unsplash.jpg
 featured: false
-draft: true
+draft: false
 sortOrder: 4
 tags:
   - self-care
