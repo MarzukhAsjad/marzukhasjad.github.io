@@ -21,7 +21,7 @@ _Photo by [Todd Rhines](https://unsplash.com/@rhinestodd?utm_source=unsplash&utm
 Being jobless gives you a new perspective on life. Suddenly you have a lot of time on your hands and you don't know what to do with it. You go to LinkedIn to apply for a job, chances are you'll see 1 of the following 3 things when you go on to that atrocious platform:
 
 - "I am absolutely thrilled to announce that I am embarking on a transformative..."
-- "A recruiter noticed you, but you need premium to see them..." (Spoiler alert: they are probably viewing you in private mode, so you can't even see who viewed your profile)
+- "A recruiter noticed you, but you need premium to see them..." (Spoiler alert: they're probably viewing you in private mode, so you can't even see who viewed your profile)
 - "Claude just killed designers..."
 
 ![bro's a serial killer at this point{width: w-100}](/blog4/doomspeak.jpg)
@@ -30,13 +30,17 @@ All this doom kills your motivation (don't tell Claude) and you then take a brea
 
 ### Little changes, big effects
 
-I am here to say that there ARE some little things you can do that actively nudges you to learn. If Instagram is your go-to doomscrolling platform, you can actively follow and interact with some technology focused content and creators, which will teach your algorithm to push these forward more. Try following **@arjay_the_dev** on Instagram, **@htx_studio** as well as **@gazisj**. For YouTube, try **@JomaTech** and **@SebastianLague**. I am not on Tiktok so do not know who are popular there, but I am sure there are relevant people. When you see their content, for example, Arjay's system design reels, HTX Studio's explanations of what inspired them to create a wild new project, or even Joma's hilarious videos, I want you to take a pause and think about what they're saying. Interact with their content, and then try to take an active break and learn more about the topic they're talking about.
+I'm here to say that there ARE some little things you can do that actively nudges you to learn. If Instagram is your go-to doomscrolling platform, you can actively follow and interact with some technology focused content and creators, which will teach your algorithm to push these forward more. Try following **@arjay_the_dev** on Instagram, **@htx_studio** as well as **@gazisj**. For YouTube, try **@JomaTech** and **@SebastianLague**. I'm not on Tiktok so don't know who are popular there, but I'm sure there are relevant people. When you see their content, for example, Arjay's system design reels, HTX Studio's explanations of what inspired them to create a wild new project, or even Joma's hilarious videos, I want you to take a pause and think about what they're saying. Interact with their content, and then try to take an active break and learn more about the topic the're talking about.
 
 Additionally, I'd also recommend following some newsletters and online communities that are relevant to your interests. Try [Journal Club](https://journalclub.io/), it's a newsletter that emails you a simple explanation on a new research paper every day (they make it so easy to understand). Also tune into [daily.dev](https://daily.dev), where you're forced to face new technologies and trends in the tech industry every time you open a chrome tab. You can also follow some relevant online communities on even LinkedIn (ew).
 
 ### Does being jobless give you more hours to learn?
 
-The best part about being jobless is that you have so much time to learn new things. Job stability is a thing of the past in the tech industry, and if you're an entry/junior/mid-level, then I hate to break it to you, but the dream of the stable job has long gone ever since ChatGPT got released. Learning is the only thing that you can keep doing.
+The best part about being jobless is that you have so much time to learn new things. Job stability is a thing of the past in the tech industry, and if you're an entry/junior/mid-level, then I hate to break it to you, but the dream of the stable job has long gone ever since ChatGPT got released. 
+
+![Amazon/Google/Meta, the biggest "stablest" tech companies do mass layoff](/blog4/layoff-can-happen-anytime.jpg)
+
+Learning is the only thing that you can keep doing, before/after/during the job.
 
 ##### Employed:
 
@@ -76,7 +80,7 @@ flowchart TD
   linkStyle 1 stroke:#10b981,stroke-width:3px,stroke-dasharray:8 5;
 ```
 
-The funny thing is, I did not include hobbies in the employed flowchart (but we know we rarely have time for them when we're working 9 to 5, right?). Anyways, being jobless gives you more hours to learn. Use that time to learn new skills, work on projects, or even just read about new technologies and trends in the industry. I'm also probably not being fully honest on the time you waste on doomscrolling, but you get the point.
+The funny thing is, I didn't include hobbies in the employed flowchart (but we know we rarely have time for them when we're working 9 to 5, right?). Anyways, being jobless gives you more hours to learn. Use that time to learn new skills, work on projects, or even just read about new technologies and trends in the industry. I'm also probably not being fully honest on the time you waste on doomscrolling, but you get the point.
 
 ### Be hungry for knowledge
 
@@ -84,7 +88,7 @@ Learning new skills is actually so fun. Did you just **vibe-code** that database
 
 ### Conclusion
 
-Look I get it, doomscrolling is something you'll do no matter how much you tell yourself you won't anymore. But there are some ways you can make it work for you. You will feel pain, but what you choose to do next is up to you. Will you let it consume you? Or will you use that pain to drive you to strive (+1 rhyme points) for better things? The choice is yours. _But seriously, if you are feeling down, please reach out to someone. You are not alone._
+Look I get it, doomscrolling is something you'll do no matter how much you tell yourself you won't anymore. But there are some ways you can make it work for you. You'll feel pain, but what you choose to do next is up to you. Will you let it consume you? Or will you use that pain to drive you to strive (+1 rhyme points) for better things? The choice is yours. _But seriously, if you're feeling down, please reach out to someone. You're not alone._
 
 ![Yooo this right dude's line is COLD. I wonder if I came up with this or I read it elsewhere.](/blog4/pain-drives-us-to-strive.jpg)
 
