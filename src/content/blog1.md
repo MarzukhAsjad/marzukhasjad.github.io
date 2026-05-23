@@ -8,7 +8,6 @@ description: Microservices are super beneficial for a large company, with a larg
 coverImage: /blog1/webhook_post_image.png
 featured: true
 draft: false
-sortOrder: 1
 tags:
   - microservices
   - webhooks

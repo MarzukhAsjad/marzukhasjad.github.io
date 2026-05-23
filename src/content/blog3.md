@@ -8,7 +8,6 @@ description: When your system has more than a few microservices, how do you keep
 coverImage: /blog3/centralise-monitoring.png
 featured: false
 draft: false
-sortOrder: 3
 tags:
   - observability
   - fastapi

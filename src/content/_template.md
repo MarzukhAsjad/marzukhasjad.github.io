@@ -8,7 +8,7 @@ description: Replace with the short excerpt used for the blog preview card.
 coverImage: /blog-folder/cover-image.png
 featured: false
 draft: false
-sortOrder: 999
+sortOrder: 999 # optional — only needed to manually override date-based ordering for same-date posts
 tags:
   - replace-tag
   - replace-tag

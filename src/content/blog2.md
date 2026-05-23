@@ -8,7 +8,6 @@ description: As the co-founder of an ed-tech startup, I’ve seen firsthand how 
 coverImage: /blog2/convenience_affects_b2c.png
 featured: false
 draft: false
-sortOrder: 2
 tags:
   - b2c
   - product

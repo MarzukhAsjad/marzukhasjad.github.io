@@ -8,7 +8,6 @@ description: Being jobless gives you a new perspective on life. Suddenly you hav
 coverImage: /blog4/todd-rhines-W0jzK552m8E-unsplash.jpg
 featured: false
 draft: false
-sortOrder: 4
 tags:
   - self-care
   - learning

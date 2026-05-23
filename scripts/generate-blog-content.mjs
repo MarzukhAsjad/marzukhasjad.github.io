@@ -183,15 +183,17 @@ function normalizeTags(value) {
 }
 
 function sortPosts(left, right) {
+  // Featured posts always come first
   if (left.featured !== right.featured) {
     return left.featured ? -1 : 1;
   }
 
-  if (left.sortOrder !== right.sortOrder) {
-    return left.sortOrder - right.sortOrder;
-  }
+  // Date descending: newest first (primary sort)
+  const dateDiff = right.date.localeCompare(left.date);
+  if (dateDiff !== 0) return dateDiff;
 
-  return right.date.localeCompare(left.date);
+  // sortOrder as tiebreaker only when dates are equal
+  return left.sortOrder - right.sortOrder;
 }
 
 function buildGeneratedFile(posts) {
