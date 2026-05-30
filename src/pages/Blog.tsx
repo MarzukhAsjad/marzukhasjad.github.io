@@ -10,6 +10,8 @@ const Blog = () => {
   const secondaryPosts = publishedBlogPosts.filter(
     (post) => post.slug !== featuredPost?.slug,
   );
+  const leftLanePosts = secondaryPosts.filter((_, index) => index % 2 === 0);
+  const rightLanePosts = secondaryPosts.filter((_, index) => index % 2 === 1);
 
   return (
     <div className="min-h-screen bg-purple-950 text-white">
@@ -52,7 +54,7 @@ const Blog = () => {
                 <h3 className="text-2xl font-mono font-semibold text-white mb-6 mt-12">
                   Check out my other posts!
                 </h3>
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
+                <div className="space-y-8 xl:hidden">
                   {secondaryPosts.map((post) => (
                     <BlogPreview
                       key={post.slug}
@@ -66,6 +68,40 @@ const Blog = () => {
                       featured={post.featured}
                     />
                   ))}
+                </div>
+
+                <div className="hidden xl:grid xl:grid-cols-2 xl:gap-8 xl:items-start">
+                  <div className="flex flex-col gap-8">
+                    {leftLanePosts.map((post) => (
+                      <BlogPreview
+                        key={`left-${post.slug}`}
+                        title={post.title}
+                        subtitle={post.subtitle}
+                        imageUrl={post.coverImage}
+                        description={post.description}
+                        slug={post.slug}
+                        author={post.author}
+                        createdDate={formatBlogDate(post.date)}
+                        featured={post.featured}
+                      />
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col gap-8">
+                    {rightLanePosts.map((post) => (
+                      <BlogPreview
+                        key={`right-${post.slug}`}
+                        title={post.title}
+                        subtitle={post.subtitle}
+                        imageUrl={post.coverImage}
+                        description={post.description}
+                        slug={post.slug}
+                        author={post.author}
+                        createdDate={formatBlogDate(post.date)}
+                        featured={post.featured}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : null}
