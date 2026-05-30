@@ -1,7 +1,8 @@
 import blogContent0 from "@/content/blog1.md?raw";
-import blogContent1 from "@/content/blog4.md?raw";
-import blogContent2 from "@/content/blog3.md?raw";
-import blogContent3 from "@/content/blog2.md?raw";
+import blogContent1 from "@/content/blog5.md?raw";
+import blogContent2 from "@/content/blog4.md?raw";
+import blogContent3 from "@/content/blog3.md?raw";
+import blogContent4 from "@/content/blog2.md?raw";
 
 export interface BlogPostRecord {
   title: string;
@@ -36,6 +37,21 @@ export const blogPosts: BlogPostRecord[] = [
     content: blogContent0,
   },
   {
+    title: "How I Built a DIY Webcam with My Android Phone and Laptop",
+    subtitle: "Turning an Android phone into a local webcam server with CameraX and a lightweight embedded stream endpoint.",
+    date: "2026-05-30",
+    author: "Marzukh Akib Asjad",
+    slug: "diy-webcam-android-phone-laptop",
+    description: "I am really attracted to shiny and glowy objects. So when I saw the ASUS ROG G14 with the crazy backlit animation, I did not hesitate at all to buy it during the first year of college. It was only after turning it on that I realised it did not have a webcam.",
+    coverImage: "/blog5/day1-cover.jpg",
+    featured: false,
+    draft: false,
+    sortOrder: 5,
+    tags: ["android","build-in-public","server"],
+    sourceFile: "src/content/blog5.md",
+    content: blogContent1,
+  },
+  {
     title: "Jobless, procrastinating, but not lost",
     subtitle: "Beat the algorithm and use your jobless time to learn new things, even when you have no motivation to do so.",
     date: "2026-05-23",
@@ -48,7 +64,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["self-care","learning"],
     sourceFile: "src/content/blog4.md",
-    content: blogContent1,
+    content: blogContent2,
   },
   {
     title: "Monitoring your distributed microservices with Observability Tools",
@@ -63,7 +79,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["observability","fastapi","microservices"],
     sourceFile: "src/content/blog3.md",
-    content: blogContent2,
+    content: blogContent3,
   },
   {
     title: "B2C success is about customer convenience",
@@ -78,7 +94,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["b2c","product","growth"],
     sourceFile: "src/content/blog2.md",
-    content: blogContent3,
+    content: blogContent4,
   }
 ];
 
