@@ -17,17 +17,17 @@ tags:
 
 ### Motive
 
-I am **really** attracted to shiny and glowy objects. So when I saw the ASUS ROG G14 with the crazy backlid animation, I did not hesitate at all to buy it during the first year of college. It was only after turning it on did I realise that it did not have a webcam.
+I am **really** attracted to shiny and glowy objects. So when I saw the ASUS ROG G14 with the crazy backlit animation, I did not hesitate at all to buy it during the first year of college. It was only after turning it on that I realised it did not have a webcam.
 
 ![My father did ask why my laptop has a disco on the back{width: w-75}](/blog5/rog-backlid-anime-matrix.jpg)
 
-So when I announed that I would create a 30 day series of building-in-public on LinkedIn, I realised I had no webcam on my laptop. So for the first project, I decided to turn my phone's camera into a webcam for my laptop.
+So when I announced that I would create a 30-day build-in-public series on LinkedIn, I realised I had no webcam on my laptop. So for the first project, I decided to turn my phone's camera into a webcam for my laptop.
 
-The idea was straightforward. My laptop would make a request to an application running on my phone, the phone would open its camera, and the latest footage would be streamed back to the laptop. That meant I needed a small Android application (owning an Android phone really came to clutch) that could both access the camera and expose an HTTP endpoint inside the app itself.
+The idea was straightforward. My laptop would make a request to an application running on my phone, the phone would open its camera, and the latest footage would be streamed back to the laptop. That meant I needed a small Android application (owning an Android phone really came in clutch) that could both access the camera and expose an HTTP endpoint inside the app itself.
 
 ### Architecture
 
-To get started, I set up an Android project in Android Studio and looked into how camera access works in modern Android apps. Last I worked with Android was back in the 3rd year of my college, so it has been some time. After researching for a while, I found the two horsemen that would serve my android app's purpose. **CameraX** for camera related shenanigans and **Ktor** for hosting an embedded server within the app.
+To get started, I set up an Android project in Android Studio and looked into how camera access works in modern Android apps. The last time I worked with Android was back in the 3rd year of my college, so it has been some time. After researching for a while, I found the two horsemen that would serve my Android app's purpose. **CameraX** for camera-related shenanigans and **Ktor** for hosting an embedded server within the app.
 
 ```mermaid
 flowchart RL
@@ -46,23 +46,119 @@ flowchart RL
   class laptop laptop;
 ```
 
-Once the basic direction was clear, the architecture became much easier to reason about. The app needed camera-related dependencies, the right permissions, a main activity to initialize things, and a small routing layer for the server endpoints. In the main activity, the plan was to create a startCamera() flow that opens the camera and keeps track of the most recent frame available for streaming.
+### Implementation
 
-I separated the server routing into its own file and defined two endpoints. One route was just a simple root path to confirm that the embedded server was running, and the other was a /stream endpoint responsible for returning the actual footage. That split made the app easier to debug because I could test server health separately from camera streaming.
+The following dependencies and permissions had to be explicitly added to the `build.gradle.kts` and `AndroidManifest.xml` files, respectively.
 
-One of the early design decisions was to avoid sending every possible frame continuously. Streaming everything as fast as possible would put unnecessary pressure on the phone’s CPU, so I focused on returning the latest frame at a small interval instead. In the transcript, that interval was set to around 30 milliseconds, which roughly targets 30 FPS while keeping the implementation lightweight enough for a simple DIY setup.
+```kts
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.ktor.server.core)
+    implementation(libs.ktor.server.cio)
+```
 
-To make the app practical to use, I added logging and a way to surface the phone’s current IP address on startup. That mattered because the laptop needed to know exactly which local IP and port to hit in order to talk to the app, and the transcript shows testing against port 8080. Small visibility improvements like this often save more debugging time than people expect.
+```xml
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+```
 
-The first test was encouraging but incomplete. The root endpoint responded correctly, which confirmed that the server itself was alive, but the /stream endpoint did not work at first. That is usually the phase where a project stops feeling like a neat idea and starts becoming a real engineering task.
+One of the early design decisions was to avoid sending every possible frame continuously. Streaming everything as fast as possible would put unnecessary pressure on the phone’s CPU, so I focused on returning the latest frame at a small interval instead. That interval was set to around 30 milliseconds, which roughly targets 30 FPS while keeping the implementation lightweight enough for a simple DIY setup.
 
-The fix came from checking the logs and reviewing the setup more carefully. One issue was that the streaming delay had not actually been added yet, and another was that camera permissions needed to be requested explicitly at runtime. After adding the delay and handling permissions properly, the application reopened with the correct permission prompt and the stream finally started returning footage successfully.
+```kotlin
+// MainActivity.kt
+    private fun startCamera() {
+        val imageAnalysis = ImageAnalysis.Builder()
+            // Do not queue every frame. Just keep the newest one.
+            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+            .build()
 
-That moment was the payoff. The Android phone was now acting like a small local webcam server, and the laptop could request the stream and receive live camera output back from the phone. From there, the next steps were packaging the app into an APK and uploading the source code so others could inspect the implementation for themselves.
+        imageAnalysis.setAnalyzer(cameraExecutor) { image ->
+            image.use {
+                // Take the camera frame and turn it into a bitmap.
+                val bitmap = image.toBitmap()
 
-What I like most about this project is that it sits in a sweet spot between fun and practical. It solves a real problem, but it also forces you to think about architecture, permissions, resource usage, and debugging on a real device. Projects like this are a good reminder that even a simple tool can become a great learning exercise when you build it end to end.
+                // Compress that bitmap into JPEG bytes.
+                val stream = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream)
 
-Optional ending
-You can end the post with a short closing like this:
+                // Store the latest frame so the /stream route can send it.
+                latestFrame = stream.toByteArray()
+            }
+        }
 
-This project started as a workaround for a missing webcam, but it quickly became a fun way to combine Android camera handling with lightweight local streaming. The final version is simple, usable, and a good foundation for future improvements like better frame encoding, multi-device support, or lower-latency transport.
+        // Connect this analyzer to the front camera so it starts receiving frames.
+    }
+```
+
+The frame processing logic was implemented using CameraX’s `ImageAnalysis` use case, but to decide how many frames to return, I preferred to do it on the server side instead of the client side.
+
+```kotlin
+// MainActivity.kt
+    private fun startServer() {
+        // start server
+        embeddedServer<CIOApplicationEngine, CIOApplicationEngine.Configuration> (CIO, port = 8080, host = "0.0.0.0") {
+            configureRouting { latestFrame } // Routing configuration done on a different file for better readability
+        }.start(wait = false)
+    }
+```
+
+The routing configuration was straightforward. The root endpoint was a simple health check that returned a "Webcam server is running" message, and the `/stream` endpoint returned the latest camera footage as an MJPEG stream. The streaming endpoint was implemented using Ktor’s CIO engine, which allowed for efficient handling of HTTP requests and responses directly within the Android app.
+
+```kotlin
+// WebcamRouting.kt
+
+fun Application.configureRouting(latestFrame: () -> ByteArray?) {
+    routing {
+        get("/stream") {
+            // Keep sending the latest JPEG frame as an MJPEG response.
+            call.respondOutputStream(
+                ContentType.parse("multipart/x-mixed-replace; boundary=frame")
+            ) {
+                while (true) {
+                    val frame = latestFrame()
+
+                    if (frame != null) {
+                        // Write the multipart headers for this frame.
+                        ... write(headers)
+                        // Write the actual JPEG bytes.
+                        ... write(frame)
+                        flush()
+                    }
+
+                    // Small delay so the app sends frames steadily instead of too aggressively.
+                    delay(30)
+                }
+            }
+        }
+
+        get("/") {
+            call.respondText("Webcam server running")
+        }
+    }
+}
+```
+
+### Testing and Debugging
+
+Testing on my device was just downright painful. I know most Android developers would laugh at this, but wow, it took me forever to find the developer options. After looking up online, I learned that I would have to tap a certain build setting on the phone 7 times to turn on the developer options.
+
+![Me trying to find the "developer options" without knowing I had to activate it first](/blog5/looking-through-settings-be-like.gif)
+
+After building it and running it, the root endpoint responded correctly, which confirmed that the server itself was alive, but the /stream endpoint did not work. This is the moment where I realised having logs would have been a great help. I did try to hand it off to some LLMs to help me debug, but it was hard to describe the issue without logs, and I also did not want to spend the time to set up a proper logging system within the app. Turns out, Logcat is really helpful and easy to use for debugging Android apps, and I should have used it from the start. So after setting up some Logcat logs to check if the camera was working properly, I found out that the camera was not even opening.
+
+The issue was that camera permissions needed to be requested explicitly at runtime. After handling permissions properly, the application reopened with the correct permission prompt and the stream finally started returning footage successfully.
+
+![Explicitly asking the phone for camera permissions at runtime was the missing piece of the puzzle](/blog5/check-for-permission.png)
+
+![The stream finally started working after handling permissions properly](/blog5/works-now.png)
+
+That moment was the payoff. The Android phone was now acting like a small local webcam server, and the laptop could request the stream and receive live camera output back from the phone. I made sure to upload the source code to a public [GitHub repository](https://github.com/MarzukhAsjad/diy-webcam) for anyone interested in trying it out or building on it.
+
+### Security and Potential Improvements
+
+This app is a security nightmare, so I would not recommend using it on any network that you do not trust. The server is open to anyone on the same Wi-Fi network, and there is no authentication or encryption in place. For a more secure implementation, you could add authentication mechanisms, encrypt the stream, or even implement a more robust streaming protocol. Additionally, the current implementation is quite basic and could be improved in several ways. For example, you could optimize the frame encoding to reduce latency, add support for multiple cameras or devices, or implement a more efficient streaming protocol like WebRTC for better performance. Will I work on these improvements? Probably not, but if you are interested in building on this project, feel free to fork the repository and experiment with different features and optimizations.
+
+### Conclusion
+
+Overall, this project was a fun and educational experience that allowed me to explore Android development, camera access, and embedded server hosting. If you have an old Android phone lying around and want to turn it into a DIY webcam, this project is a great starting point. I will probably not work with an Android project anytime soon. The next few projects will definitely be limited to what I can build on my laptop. Stay tuned for the next one!
