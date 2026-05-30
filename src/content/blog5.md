@@ -161,4 +161,4 @@ This app is a security nightmare, so I would not recommend using it on any netwo
 
 ### Conclusion
 
-Overall, this project was a fun and educational experience that allowed me to explore Android development, camera access, and embedded server hosting. If you have an old Android phone lying around and want to turn it into a DIY webcam, this project is a great starting point. I will probably not work with an Android project anytime soon. The next few projects will definitely be limited to what I can build on my laptop. Stay tuned for the next one!
+Overall, this project was a fun and educational experience that allowed me to explore Android development, camera access, and embedded server hosting. If you have an old Android phone lying around and want to turn it into a DIY webcam, this project is a great starting point. You can check out my YouTube video [here](https://www.youtube.com/watch?v=_Iqa9tep-5c) and subscribe to my channel for future updates. I will probably not work with an Android project anytime soon. The next few projects will definitely be limited to what I can build on my laptop. Stay tuned for the next one!
