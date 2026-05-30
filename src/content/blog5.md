@@ -4,8 +4,8 @@ subtitle: Turning an Android phone into a local webcam server with CameraX and a
 date: 2026-05-30
 author: Marzukh Akib Asjad
 slug: diy-webcam-android-phone-laptop
-description: A practical breakdown of building an Android-based DIY webcam using CameraX, runtime permissions, and local HTTP streaming.
-coverImage: /blog5/day-cover.jpg
+description: I am really attracted to shiny and glowy objects. So when I saw the ASUS ROG G14 with the crazy backlit animation, I did not hesitate at all to buy it during the first year of college. It was only after turning it on that I realised it did not have a webcam.
+coverImage: /blog5/day1-cover.jpg
 featured: false
 draft: false
 sortOrder: 5
@@ -141,17 +141,17 @@ fun Application.configureRouting(latestFrame: () -> ByteArray?) {
 
 ### Testing and Debugging
 
-Testing on my device was just downright painful. I know most Android developers would laugh at this, but wow, it took me forever to find the developer options. After looking up online, I learned that I would have to tap a certain build setting on the phone 7 times to turn on the developer options.
+Testing on my phone was just downright painful. I know most Android developers would laugh at this, but wow, it took me forever to find the developer options. After looking up online, I learned that I would have to tap a certain build setting on the phone 7 times to turn on the developer options.
 
-![Me trying to find the "developer options" without knowing I had to activate it first](/blog5/looking-through-settings-be-like.gif)
+![Me trying to find the "developer options" without knowing I had to activate it first{width: w-100}](/blog5/looking-through-settings-be-like.gif)
 
-After building it and running it, the root endpoint responded correctly, which confirmed that the server itself was alive, but the /stream endpoint did not work. This is the moment where I realised having logs would have been a great help. I did try to hand it off to some LLMs to help me debug, but it was hard to describe the issue without logs, and I also did not want to spend the time to set up a proper logging system within the app. Turns out, Logcat is really helpful and easy to use for debugging Android apps, and I should have used it from the start. So after setting up some Logcat logs to check if the camera was working properly, I found out that the camera was not even opening.
+After building it and running it, the root endpoint responded correctly, which confirmed that the server itself was alive, but the `/stream` endpoint did not work. This is the moment where I realised having logs would have been a great help. I did try to hand it off to some LLMs to help me debug, but it was hard to describe the issue without logs, and I also did not want to spend the time to set up a proper logging system within the app. Turns out, Logcat is really helpful and easy to use for debugging Android apps, and I should have used it from the start. So after setting up some Logcat logs to check if the camera was working properly, I found out that the camera was not even opening.
 
 The issue was that camera permissions needed to be requested explicitly at runtime. After handling permissions properly, the application reopened with the correct permission prompt and the stream finally started returning footage successfully.
 
-![Explicitly asking the phone for camera permissions at runtime was the missing piece of the puzzle](/blog5/check-for-permission.png)
+![Explicitly asking the phone for camera permissions at runtime was the missing piece of the puzzle{width: w-100}](/blog5/check-for-permission.png)
 
-![The stream finally started working after handling permissions properly](/blog5/works-now.png)
+![The stream finally started working after handling permissions properly (that's me lol){width: w-100}](/blog5/works-now.png)
 
 That moment was the payoff. The Android phone was now acting like a small local webcam server, and the laptop could request the stream and receive live camera output back from the phone. I made sure to upload the source code to a public [GitHub repository](https://github.com/MarzukhAsjad/diy-webcam) for anyone interested in trying it out or building on it.
 
