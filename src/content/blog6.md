@@ -19,6 +19,8 @@ tags:
 
 You know that movie shot where the subject looks locked in place while the entire world stretches or collapses behind them? That is the dolly zoom effect, and it looks mildly illegal when done right.
 
+![Classic dolly zoom effect from the Jaws movie](/blog6/dolly-zoom-jaws.gif)
+
 I wanted to see if I could fake that effect with a **single static image**.
 
 At first that sounds impossible, because no camera is moving. But if you break it down visually, the trick is actually straightforward:
