@@ -93,11 +93,7 @@ I plotted those points with Matplotlib (with axes visible) so I could verify pix
 
 Correcting that did produce the expected result, where the red box stayed perfectly in place while the white background shrunk around it.
 
-For subject localization, I started with a pre-trained MobileNet-SSD model in OpenCV DNN to get a person box. This only allowed me to do a simple subject identification. However, for a clean subject cutout, I used a pre-trained Mask R-CNN model and extracted the person mask.
-
-- The MobileNet-SSD model info came from [this Kaggle dataset](https://www.kaggle.com/datasets/bouweceunen/pretrained-trt-engines-cocotacohardhatposenet).
-
-- The Mask R-CNN source was [this PyTorch Vision model page](https://docs.pytorch.org/vision/main/models/generated/torchvision.models.detection.maskrcnn_resnet50_fpn.html).
+For subject localization, I started with a pre-trained MobileNet-SSD model in OpenCV DNN to get a person box. The MobileNet-SSD model info came from [this Kaggle dataset](https://www.kaggle.com/datasets/bouweceunen/pretrained-trt-engines-cocotacohardhatposenet). This however, only allowed me to do a simple subject identification. For a clean subject cutout, I used a pre-trained Mask R-CNN model and extracted the person mask. The Mask R-CNN source was [this PyTorch Vision model page](https://docs.pytorch.org/vision/main/models/generated/torchvision.models.detection.maskrcnn_resnet50_fpn.html).
 
 
 ```python
