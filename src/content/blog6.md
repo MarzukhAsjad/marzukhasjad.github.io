@@ -5,7 +5,7 @@ date: 2026-06-02
 author: Marzukh Akib Asjad
 slug: dolly-zoom-on-static-image-opencv
 description: Dolly Zoom shots are absolutely majestic and when done right, they add a lot of depth and emotion into the scene in cinematrography.
-coverImage: /blog6/day2-cover.jpg
+coverImage: /blog6/day-2-v2-Cover-final.png
 featured: false
 draft: false
 sortOrder: 6
