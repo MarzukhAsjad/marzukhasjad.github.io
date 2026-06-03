@@ -17,9 +17,9 @@ tags:
 
 ### Motive
 
-You know that movie shot where the subject looks locked in place while the entire world stretches or collapses behind them? That is the dolly zoom effect, and it looks mildly illegal when done right.
+Dolly Zoom shots are absolutely majestic and when done right, they add a lot of depth and emotion into the scene in cinematrography. The effect is achieved by moving the camera towards or away from the subject while simultaneously zooming in the opposite direction. This creates a surreal visual where the subject remains the same size while the background appears to stretch or compress.
 
-![Classic dolly zoom effect from the Jaws movie](/blog6/dolly-zoom-jaws.gif)
+![Classic dolly zoom effect from the Jaws movie{width: w-100s}](/blog6/dolly-zoom-jaws.gif)
 
 I wanted to see if I could fake that effect with a **single static image**.
 
@@ -28,7 +28,7 @@ At first that sounds impossible, because no camera is moving. But if you break i
 1. Keep the subject fixed in the same position and size.
 2. Scale the background in or out around a center point.
 
-I used OpenCV in a notebook for the full pipeline, then generated a sequence of frames and stitched them into a GIF. This was Day 2 of my build-in-public streak, and it turned into a very fun mix of geometry, masks, and small debugging pain.
+I used OpenCV in a notebook for the full pipeline, then generated a sequence of frames and stitched them into a GIF. This was Day 2 of my build-in-public challenge, and it turned into a very fun mix of geometry, masks, and small debugging pain.
 
 ### Architecture
 
@@ -36,10 +36,17 @@ I approached this in two phases.
 
 First, I used a toy image with a red rectangle to validate the math and coordinate logic. That helped me verify I could keep the boxed subject in place while shrinking the background.
 
-Then I switched to a real image and upgraded the pipeline with person detection + instance segmentation so I could isolate an actual human subject.
+![Sample image created for testing{width: w-75}](/blog6/test-image.jpg)
+
+Because this is a very horrible example, it does not show the vision. But I only need to prove it works with a simple bounding box, and afterwards I can test it on a real photo with an actual person in it.
+
+![Real photo with person as subject{width: w-100}](/blog6/pexels-arth-443963208-30799008.jpg)
+_Photo by Arth on [Pexels](https://www.pexels.com/photo/man-enjoying-mountainous-landscape-view-30799008/)_
+
+The pipeline is as follows:
 
 ```mermaid
-flowchart LR
+flowchart TD
 	A[Input Static Image] --> B[Detect Subject Region]
 	B --> C[Extract Subject Mask]
 	C --> D[Scale Background Around Subject Center]
@@ -49,7 +56,16 @@ flowchart LR
 	G --> H[Export GIF]
 
 	classDef block fill:#0b1020,stroke:#22c55e,color:#ecfeff,stroke-width:2px;
+	classDef warm fill:#fff7ed,stroke:#f97316,color:#7c2d12,stroke-width:2px;
+	classDef cool fill:#eff6ff,stroke:#3b82f6,color:#1e3a8a,stroke-width:2px;
+	classDef accent fill:#ecfeff,stroke:#06b6d4,color:#164e63,stroke-width:2px;
+	classDef success fill:#f0fdf4,stroke:#22c55e,color:#14532d,stroke-width:2px;
 	class A,B,C,D,E,F,G,H block;
+	class A,B warm;
+	class C,D,E cool;
+	class F,G accent;
+	class H success;
+	linkStyle default stroke:#38bdf8,stroke-width:2px;
 ```
 
 ### Implementation
@@ -72,9 +88,17 @@ x, y, w, h = cv2.boundingRect(largest_cnt)
 
 I plotted those points with Matplotlib (with axes visible) so I could verify pixel alignment while scaling. This was crucial, because early on I made the classic mistake: scaling happened around the top-left origin instead of the image center.
 
-Once I corrected that, I moved to a real photo and built a more practical version.
+![Expected outcome of the test image with bounding box and axes{width: w-75}](/blog6/test-image-expected.png)
+![What I got initially with the wrong scaling origin{width: w-75}](/blog6/test-image-initial-try.png)
 
-For subject localization, I started with a pre-trained MobileNet-SSD model in OpenCV DNN to get a person box. Then for clean subject cutout, I used a pre-trained Mask R-CNN model and extracted the person mask.
+Correcting that did produce the expected result, where the red box stayed perfectly in place while the white background shrunk around it.
+
+For subject localization, I started with a pre-trained MobileNet-SSD model in OpenCV DNN to get a person box. This only allowed me to do a simple subject identification. However, for a clean subject cutout, I used a pre-trained Mask R-CNN model and extracted the person mask.
+
+- The MobileNet-SSD model info came from [this Kaggle dataset](https://www.kaggle.com/datasets/bouweceunen/pretrained-trt-engines-cocotacohardhatposenet).
+
+- The Mask R-CNN source was [this PyTorch Vision model page](https://docs.pytorch.org/vision/main/models/generated/torchvision.models.detection.maskrcnn_resnet50_fpn.html).
+
 
 ```python
 model = torchvision.models.detection.maskrcnn_resnet50_fpn(pretrained=True)
@@ -84,10 +108,12 @@ with torch.no_grad():
 		prediction = model([img_tensor])
 ```
 
+![Output mask from Mask R-CNN model{width: w-100}](/blog6/mask-rcnn-output.png)
+
 After getting the mask, the core composition step was:
 
 1. Compute subject center from mask pixels.
-2. Affine-scale the whole background around that center.
+2. Scale the background around that center.
 3. Alpha blend the original subject over the scaled background.
 
 ```python
@@ -98,6 +124,10 @@ blended = (foreground * mask_3ch) + (background * (1.0 - mask_3ch))
 final_composition = blended.astype(np.uint8)
 ```
 
+![Result of the composition step with subject blended over scaled background{width: w-100}](/blog6/composition-result.png)
+
+It is important to note that there was a lot of white border around the subject after scaling, which is expected since the background shrinks. To handle that, I computed the transformed corner coordinates and cropped to a common valid region across all frames to keep the animation clean.
+
 Then came the animation part. I generated around 30 scale values from 1.0 to 0.7, repeated the composition process for each scale, and stored each frame.
 
 ```python
@@ -107,38 +137,23 @@ scales = np.linspace(1.0, 0.7, num_frames)
 
 Finally, I converted BGR frames to RGB and exported a looping GIF with `imageio`.
 
-### Testing and Debugging
+![Resulting GIF showing the dolly zoom effect on the static image{width: w-100}](/blog6/dolly-zoom-effect.gif)
 
-This was one of those projects where each stage looked "kind of right" until you inspected it closely.
+### Potential Improvements
 
-The first weird result looked like the background was shrinking but drifting diagonally. That turned out to be a transformation-origin bug. Fixing center-based scaling made the effect immediately more believable.
+For a more polished version, there are several areas to explore:
 
-The second issue was edge artifacts and blank margins. Since scaling down reveals empty border areas, I computed transformed corner coordinates and cropped to a valid common region across frames so the animation stays clean.
-
-I also noticed slight translucency around the subject boundary in some frames. The mask worked well overall, but softer edges and interpolation artifacts can still show up when blending. That is one of the biggest visual quality levers if I revisit this.
-
-Despite those quirks, the final GIF did produce the illusion I wanted: the subject feels anchored while the environment appears to pull away.
-
-![First successful dolly zoom style GIF generated from static image frames](/blog6/final-dolly-zoom.gif)
-
-### Security and Potential Improvements
-
-No scary network security section this time, but there are still plenty of quality upgrades possible:
-
-1. Use a sharper or refined segmentation mask (matting or edge refinement) to reduce halo artifacts.
+1. Use a sharper or refined segmentation mask (matting or edge refinement) to reduce weird translucent borders around the subject.
 2. Use easing-based interpolation for scale values instead of linear spacing for smoother perceived motion.
-3. Add automatic subject selection when multiple people are present.
+3. Add depth-aware background zooming, where closer background elements scale more than distant ones, to enhance the 3D effect. You can read more about it here: [The State of the Art of Depth Estimation from Single Images](https://medium.com/@patriciogv/the-state-of-the-art-of-depth-estimation-from-single-images-9e245d51a315)
 4. Turn the notebook into a reusable script/CLI pipeline where input image and frame count are configurable.
-5. Export MP4 in addition to GIF for better quality and smaller size.
 
 Also, Mask R-CNN inference is relatively heavy. For lightweight real-time workflows, a faster segmentation model would make more sense.
 
 ### Conclusion
 
-This was a satisfying mini-experiment because it combines a cinematic idea with straightforward CV primitives: detection, masking, affine transforms, and blending.
+This was a satisfying mini-experiment because it combines a cinematic idea with straightforward CV primitives: detection, masking, affine transforms, and blending. I really like cinemtographic effects, and the fact that I combine this and my love for programming resulted in a good Monday morning.
 
-The coolest part for me was realizing the effect is less about "fancy magic" and more about careful coordinate consistency. Keep the subject fixed, manipulate only the world, and your brain does the rest.
+You can also watch the devlog version of this build for the full step-by-step narrative from rough prototype to final GIF here: [YouTube Video](https://youtu.be/cX-apyqgGrc). The notebook is available on my GitHub repo here: [GitHub Link](https://github.com/MarzukhAsjad/dolly-zoom-on-static-image) or if you want to check the Google collab version, here it is: [Colab Link](https://colab.research.google.com/drive/1n_fnndhpB3-hNfewv_giLyfnigqnq3NT?usp=sharing).
 
-If you want to try this yourself, start with one image and one subject, get the alignment right, and only then worry about polishing masks and animation smoothness. The first good-looking result arrives faster than expected.
-
-You can also watch the devlog version of this build for the full step-by-step narrative from rough prototype to final GIF.
+I might improve upon this in the future or explore other cinematic effects, so let me know if you have any suggestions or want to see a specific effect recreated with code!
