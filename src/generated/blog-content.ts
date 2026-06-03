@@ -1,8 +1,9 @@
 import blogContent0 from "@/content/blog1.md?raw";
-import blogContent1 from "@/content/blog5.md?raw";
-import blogContent2 from "@/content/blog4.md?raw";
-import blogContent3 from "@/content/blog3.md?raw";
-import blogContent4 from "@/content/blog2.md?raw";
+import blogContent1 from "@/content/blog6.md?raw";
+import blogContent2 from "@/content/blog5.md?raw";
+import blogContent3 from "@/content/blog4.md?raw";
+import blogContent4 from "@/content/blog3.md?raw";
+import blogContent5 from "@/content/blog2.md?raw";
 
 export interface BlogPostRecord {
   title: string;
@@ -37,6 +38,21 @@ export const blogPosts: BlogPostRecord[] = [
     content: blogContent0,
   },
   {
+    title: "How I Recreated the Dolly Zoom Effect on a Static Image with OpenCV",
+    subtitle: "Freezing the subject while shrinking the world using segmentation masks, affine transforms, and frame interpolation.",
+    date: "2026-06-02",
+    author: "Marzukh Akib Asjad",
+    slug: "dolly-zoom-on-static-image-opencv",
+    description: "Dolly Zoom shots are absolutely majestic and when done right, they add a lot of depth and emotion into the scene in cinematrography.",
+    coverImage: "/blog6/day-2-v2-Cover-final.png",
+    featured: false,
+    draft: false,
+    sortOrder: 6,
+    tags: ["computer-vision","cinematography","build-in-public"],
+    sourceFile: "src/content/blog6.md",
+    content: blogContent1,
+  },
+  {
     title: "How I Built a DIY Webcam with My Android Phone and Laptop",
     subtitle: "Turning an Android phone into a local webcam server with CameraX and a lightweight embedded stream endpoint.",
     date: "2026-05-30",
@@ -49,7 +65,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 5,
     tags: ["android","build-in-public","server"],
     sourceFile: "src/content/blog5.md",
-    content: blogContent1,
+    content: blogContent2,
   },
   {
     title: "Jobless, procrastinating, but not lost",
@@ -64,7 +80,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["self-care","learning"],
     sourceFile: "src/content/blog4.md",
-    content: blogContent2,
+    content: blogContent3,
   },
   {
     title: "Monitoring your distributed microservices with Observability Tools",
@@ -79,7 +95,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["observability","fastapi","microservices"],
     sourceFile: "src/content/blog3.md",
-    content: blogContent3,
+    content: blogContent4,
   },
   {
     title: "B2C success is about customer convenience",
@@ -94,7 +110,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["b2c","product","growth"],
     sourceFile: "src/content/blog2.md",
-    content: blogContent4,
+    content: blogContent5,
   }
 ];
 
