@@ -4,7 +4,7 @@ subtitle: Freezing the subject while shrinking the world using segmentation mask
 date: 2026-06-02
 author: Marzukh Akib Asjad
 slug: dolly-zoom-on-static-image-opencv
-description: I wanted to recreate that classic dolly zoom feeling without a moving camera, using just one image. This post walks through the full computer vision pipeline I used, from bounding boxes to masks to GIF generation.
+description: Dolly Zoom shots are absolutely majestic and when done right, they add a lot of depth and emotion into the scene in cinematrography.
 coverImage: /blog6/day2-cover.jpg
 featured: false
 draft: false
