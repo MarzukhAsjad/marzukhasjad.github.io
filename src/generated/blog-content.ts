@@ -30,7 +30,7 @@ export const blogPosts: BlogPostRecord[] = [
     author: "Marzukh Akib Asjad",
     slug: "building-production-rag-pipeline-aesthetics-industry",
     description: "I always thought I'd joke about this until I was asked about my passion for ETL by a company I was interviewing at. Like any startup, they also prioritise speed of development, and asked me if I would be able to go more in-depth in the next round about how I would approach",
-    coverImage: "/blog7/business-data-into-actionable-data.webp",
+    coverImage: "/blog7/cover7.jpg",
     featured: true,
     draft: false,
     sortOrder: 999,
