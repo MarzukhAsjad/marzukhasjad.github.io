@@ -1,9 +1,10 @@
 import blogContent0 from "@/content/blog1.md?raw";
-import blogContent1 from "@/content/blog6.md?raw";
-import blogContent2 from "@/content/blog5.md?raw";
-import blogContent3 from "@/content/blog4.md?raw";
-import blogContent4 from "@/content/blog3.md?raw";
-import blogContent5 from "@/content/blog2.md?raw";
+import blogContent1 from "@/content/blog7.md?raw";
+import blogContent2 from "@/content/blog6.md?raw";
+import blogContent3 from "@/content/blog5.md?raw";
+import blogContent4 from "@/content/blog4.md?raw";
+import blogContent5 from "@/content/blog3.md?raw";
+import blogContent6 from "@/content/blog2.md?raw";
 
 export interface BlogPostRecord {
   title: string;
@@ -38,6 +39,21 @@ export const blogPosts: BlogPostRecord[] = [
     content: blogContent0,
   },
   {
+    title: "I Built a Production‑Grade RAG Pipeline for the Aesthetics Industry (and It Cost Me <$300/mo)",
+    subtitle: "From a local Docker demo to a fully managed, serverless ETL pipeline with Unstructured.io, Supabase, and AWS Bedrock — no FastAPI, no Kubernetes, no tears.",
+    date: "2026-06-10",
+    author: "Marzukh Akib Asjad",
+    slug: "building-production-rag-pipeline-aesthetics-industry",
+    description: "I always thought I'd joke about this until I was asked about my passion for ETL by a company I was interviewing at. Like any startup, they also prioritise speed of development, and asked me if I would be able to go more in-depth in the next round about how I would approach",
+    coverImage: "/blog7/business-data-into-actionable-data.webp",
+    featured: false,
+    draft: false,
+    sortOrder: 999,
+    tags: ["rag","ai","build-in-public"],
+    sourceFile: "src/content/blog7.md",
+    content: blogContent1,
+  },
+  {
     title: "How I Recreated the Dolly Zoom Effect on a Static Image with OpenCV",
     subtitle: "Freezing the subject while shrinking the world using segmentation masks, affine transforms, and frame interpolation.",
     date: "2026-06-02",
@@ -50,7 +66,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 6,
     tags: ["computer-vision","cinematography","build-in-public"],
     sourceFile: "src/content/blog6.md",
-    content: blogContent1,
+    content: blogContent2,
   },
   {
     title: "How I Built a DIY Webcam with My Android Phone and Laptop",
@@ -65,7 +81,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 5,
     tags: ["android","build-in-public","server"],
     sourceFile: "src/content/blog5.md",
-    content: blogContent2,
+    content: blogContent3,
   },
   {
     title: "Jobless, procrastinating, but not lost",
@@ -80,7 +96,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["self-care","learning"],
     sourceFile: "src/content/blog4.md",
-    content: blogContent3,
+    content: blogContent4,
   },
   {
     title: "Monitoring your distributed microservices with Observability Tools",
@@ -95,7 +111,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["observability","fastapi","microservices"],
     sourceFile: "src/content/blog3.md",
-    content: blogContent4,
+    content: blogContent5,
   },
   {
     title: "B2C success is about customer convenience",
@@ -110,7 +126,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["b2c","product","growth"],
     sourceFile: "src/content/blog2.md",
-    content: blogContent5,
+    content: blogContent6,
   }
 ];
 
