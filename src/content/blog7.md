@@ -271,7 +271,7 @@ The industry standard in 2026: **DeepEval for CI/CD gating + RAGAS for the metri
 
 ### Source Code
 
-The full pipeline is open source. You can find it in the [demo-rag-repo](https://github.com/MarzukhAsjad/aesthetic-rag-demo). The architecture is designed to be made yours — swap the embedding model, change the chunking strategy, or migrate the ETL to LlamaCloud if that better fits your stack. Read the README for setup instructions, and feel free to fork and modify as needed.
+The full pipeline is open source. You can find it in the [rag-demo](https://github.com/MarzukhAsjad/rag-demo) repository. The architecture is designed to be made yours — swap the embedding model, change the chunking strategy, or migrate the ETL to LlamaCloud if that better fits your stack. Read the README for setup instructions, and feel free to fork and modify as needed.
 
 ![POV: You **actually** read the README and not your AI Agent{width: w-100}](/blog7/pov-you-read-the-readme.jpg)
 
