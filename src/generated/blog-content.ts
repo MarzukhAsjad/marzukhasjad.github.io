@@ -1,9 +1,10 @@
-import blogContent0 from "@/content/blog1.md?raw";
+import blogContent0 from "@/content/blog7.md?raw";
 import blogContent1 from "@/content/blog6.md?raw";
 import blogContent2 from "@/content/blog5.md?raw";
 import blogContent3 from "@/content/blog4.md?raw";
 import blogContent4 from "@/content/blog3.md?raw";
-import blogContent5 from "@/content/blog2.md?raw";
+import blogContent5 from "@/content/blog1.md?raw";
+import blogContent6 from "@/content/blog2.md?raw";
 
 export interface BlogPostRecord {
   title: string;
@@ -23,18 +24,18 @@ export interface BlogPostRecord {
 
 export const blogPosts: BlogPostRecord[] = [
   {
-    title: "Secure modularised microservices with webhooks communication",
-    subtitle: "How to communicate using webhooks between REST API based microservices while maintaining simplicity, security and modularity.",
-    date: "2025-10-09",
+    title: "How I'd build a Production‑Grade RAG Pipeline for the Aesthetics Industry",
+    subtitle: "From messy PDFs to a chat interface that answers questions with citations — the full architecture, vendor benchmarking, and lessons learned.",
+    date: "2026-06-10",
     author: "Marzukh Akib Asjad",
-    slug: "secure-modularised-microservices-with-webhooks-communication",
-    description: "Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices?",
-    coverImage: "/blog1/webhook_post_image.png",
+    slug: "building-production-rag-pipeline-aesthetics-industry",
+    description: "I always thought I'd joke about this until I was asked about my passion for ETL by a company I was interviewing at. Like any startup, they also prioritise speed of development, and asked me if I would be able to go more in-depth in the next round about how I would approach",
+    coverImage: "/blog7/cover7.jpg",
     featured: true,
     draft: false,
     sortOrder: 999,
-    tags: ["microservices","webhooks","distributed-systems"],
-    sourceFile: "src/content/blog1.md",
+    tags: ["rag","ai","build-in-public"],
+    sourceFile: "src/content/blog7.md",
     content: blogContent0,
   },
   {
@@ -98,6 +99,21 @@ export const blogPosts: BlogPostRecord[] = [
     content: blogContent4,
   },
   {
+    title: "Secure modularised microservices with webhooks communication",
+    subtitle: "How to communicate using webhooks between REST API based microservices while maintaining simplicity, security and modularity.",
+    date: "2025-10-09",
+    author: "Marzukh Akib Asjad",
+    slug: "secure-modularised-microservices-with-webhooks-communication",
+    description: "Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices?",
+    coverImage: "/blog1/webhook_post_image.png",
+    featured: false,
+    draft: false,
+    sortOrder: 999,
+    tags: ["microservices","webhooks","distributed-systems"],
+    sourceFile: "src/content/blog1.md",
+    content: blogContent5,
+  },
+  {
     title: "B2C success is about customer convenience",
     subtitle: "B2C success hinges on customer convenience: seamless WhatsApp AI chat, quick on-boarding, and precise guidance driving rapid 3k+ user growth in 3 months.",
     date: "2025-07-15",
@@ -110,7 +126,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["b2c","product","growth"],
     sourceFile: "src/content/blog2.md",
-    content: blogContent5,
+    content: blogContent6,
   }
 ];
 
