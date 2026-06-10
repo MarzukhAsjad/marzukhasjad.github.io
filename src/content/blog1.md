@@ -6,7 +6,7 @@ author: Marzukh Akib Asjad
 slug: secure-modularised-microservices-with-webhooks-communication
 description: Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices?
 coverImage: /blog1/webhook_post_image.png
-featured: true
+featured: false
 draft: false
 tags:
   - microservices

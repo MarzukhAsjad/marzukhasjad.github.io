@@ -1,9 +1,9 @@
-import blogContent0 from "@/content/blog1.md?raw";
-import blogContent1 from "@/content/blog7.md?raw";
-import blogContent2 from "@/content/blog6.md?raw";
-import blogContent3 from "@/content/blog5.md?raw";
-import blogContent4 from "@/content/blog4.md?raw";
-import blogContent5 from "@/content/blog3.md?raw";
+import blogContent0 from "@/content/blog7.md?raw";
+import blogContent1 from "@/content/blog6.md?raw";
+import blogContent2 from "@/content/blog5.md?raw";
+import blogContent3 from "@/content/blog4.md?raw";
+import blogContent4 from "@/content/blog3.md?raw";
+import blogContent5 from "@/content/blog1.md?raw";
 import blogContent6 from "@/content/blog2.md?raw";
 
 export interface BlogPostRecord {
@@ -24,34 +24,19 @@ export interface BlogPostRecord {
 
 export const blogPosts: BlogPostRecord[] = [
   {
-    title: "Secure modularised microservices with webhooks communication",
-    subtitle: "How to communicate using webhooks between REST API based microservices while maintaining simplicity, security and modularity.",
-    date: "2025-10-09",
-    author: "Marzukh Akib Asjad",
-    slug: "secure-modularised-microservices-with-webhooks-communication",
-    description: "Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices?",
-    coverImage: "/blog1/webhook_post_image.png",
-    featured: true,
-    draft: false,
-    sortOrder: 999,
-    tags: ["microservices","webhooks","distributed-systems"],
-    sourceFile: "src/content/blog1.md",
-    content: blogContent0,
-  },
-  {
-    title: "I Built a Production‑Grade RAG Pipeline for the Aesthetics Industry (and It Cost Me <$300/mo)",
-    subtitle: "From a local Docker demo to a fully managed, serverless ETL pipeline with Unstructured.io, Supabase, and AWS Bedrock — no FastAPI, no Kubernetes, no tears.",
+    title: "How I'd build a Production‑Grade RAG Pipeline for the Aesthetics Industry",
+    subtitle: "From messy PDFs to a chat interface that answers questions with citations — the full architecture, vendor benchmarking, and lessons learned.",
     date: "2026-06-10",
     author: "Marzukh Akib Asjad",
     slug: "building-production-rag-pipeline-aesthetics-industry",
     description: "I always thought I'd joke about this until I was asked about my passion for ETL by a company I was interviewing at. Like any startup, they also prioritise speed of development, and asked me if I would be able to go more in-depth in the next round about how I would approach",
     coverImage: "/blog7/business-data-into-actionable-data.webp",
-    featured: false,
+    featured: true,
     draft: false,
     sortOrder: 999,
     tags: ["rag","ai","build-in-public"],
     sourceFile: "src/content/blog7.md",
-    content: blogContent1,
+    content: blogContent0,
   },
   {
     title: "How I Recreated the Dolly Zoom Effect on a Static Image with OpenCV",
@@ -66,7 +51,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 6,
     tags: ["computer-vision","cinematography","build-in-public"],
     sourceFile: "src/content/blog6.md",
-    content: blogContent2,
+    content: blogContent1,
   },
   {
     title: "How I Built a DIY Webcam with My Android Phone and Laptop",
@@ -81,7 +66,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 5,
     tags: ["android","build-in-public","server"],
     sourceFile: "src/content/blog5.md",
-    content: blogContent3,
+    content: blogContent2,
   },
   {
     title: "Jobless, procrastinating, but not lost",
@@ -96,7 +81,7 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["self-care","learning"],
     sourceFile: "src/content/blog4.md",
-    content: blogContent4,
+    content: blogContent3,
   },
   {
     title: "Monitoring your distributed microservices with Observability Tools",
@@ -111,6 +96,21 @@ export const blogPosts: BlogPostRecord[] = [
     sortOrder: 999,
     tags: ["observability","fastapi","microservices"],
     sourceFile: "src/content/blog3.md",
+    content: blogContent4,
+  },
+  {
+    title: "Secure modularised microservices with webhooks communication",
+    subtitle: "How to communicate using webhooks between REST API based microservices while maintaining simplicity, security and modularity.",
+    date: "2025-10-09",
+    author: "Marzukh Akib Asjad",
+    slug: "secure-modularised-microservices-with-webhooks-communication",
+    description: "Microservices are super beneficial for a large company, with a large subdivided team. But for a small-medium sized company with 2 to 5 developers, it can be a dilemma. Do you go with them because the trend nowadays is spinning microservices?",
+    coverImage: "/blog1/webhook_post_image.png",
+    featured: false,
+    draft: false,
+    sortOrder: 999,
+    tags: ["microservices","webhooks","distributed-systems"],
+    sourceFile: "src/content/blog1.md",
     content: blogContent5,
   },
   {
