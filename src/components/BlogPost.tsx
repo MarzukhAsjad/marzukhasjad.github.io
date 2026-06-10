@@ -220,6 +220,34 @@ const BlogPost: React.FC<BlogProps> = ({
                   {children}
                 </ul>
               ),
+              table: ({ children }) => (
+                <div className="mb-6 overflow-x-auto rounded-lg border border-gray-700">
+                  <table className="min-w-full border-collapse bg-gray-900/60 text-left text-sm text-gray-100">
+                    {children}
+                  </table>
+                </div>
+              ),
+              thead: ({ children }) => (
+                <thead className="bg-gray-800/90 text-gray-100">
+                  {children}
+                </thead>
+              ),
+              tbody: ({ children }) => (
+                <tbody className="divide-y divide-gray-700">{children}</tbody>
+              ),
+              tr: ({ children }) => (
+                <tr className="hover:bg-gray-800/50 transition-colors">
+                  {children}
+                </tr>
+              ),
+              th: ({ children }) => (
+                <th className="border-b border-gray-600 px-4 py-3 font-semibold whitespace-nowrap">
+                  {children}
+                </th>
+              ),
+              td: ({ children }) => (
+                <td className="px-4 py-3 align-top">{children}</td>
+              ),
               ol: ({ children }) => (
                 <ol className="list-decimal list-outside ml-6 text-gray-200 mb-4 text-left">
                   {children}
