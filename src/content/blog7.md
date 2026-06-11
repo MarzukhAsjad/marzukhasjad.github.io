@@ -1,5 +1,5 @@
 ---
-title: How I'd build a Production‑Grade RAG Pipeline for the Aesthetics Industry
+title: How I'd build a Production grade RAG Pipeline for the Aesthetics Industry
 subtitle: From messy PDFs to a chat interface that answers questions with citations — the full architecture, vendor benchmarking, and lessons learned.
 date: 2026-06-10
 author: Marzukh Akib Asjad
